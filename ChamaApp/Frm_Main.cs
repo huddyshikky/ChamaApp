@@ -64,7 +64,11 @@ namespace ChamaApp
         private void btnMembers_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Frm_Members());
-            //OpenChildForm(new FrmVoteMaterial());
+            HideAllSubMenus();
+        }
+        private void btnNonMembers_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Frm_NonMembers());
             HideAllSubMenus();
         }
         #endregion
@@ -82,14 +86,20 @@ namespace ChamaApp
 
         private void btnReceiptOthers_Click(object sender, EventArgs e)
         {
+            OpenChildForm(new Frm_ReceiptOtherFees());
             HideAllSubMenus();
         }
 
         private void btnPayments_Click(object sender, EventArgs e)
         {
+            OpenChildForm(new Frm_NonLoanPaymentToMembers());
             HideAllSubMenus();
         }
-
+        private void btnOtherPayments_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Frm_OtherPayments());
+            HideAllSubMenus();
+        }
         #endregion
 
         private void btnLoanManagement_Click(object sender, EventArgs e)
@@ -99,6 +109,7 @@ namespace ChamaApp
         #region LoanManagementSubMenu
         private void btnIssueLoan_Click(object sender, EventArgs e)
         {
+            OpenChildForm(new Frm_LoanProcessing());
             HideAllSubMenus();
         }
 
@@ -160,5 +171,7 @@ namespace ChamaApp
         {
             btnRegistration.ForeColor = Color.Gainsboro;
         }
+
+        
     }
 }

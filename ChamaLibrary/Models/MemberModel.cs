@@ -12,6 +12,7 @@ namespace ChamaLibrary.Models
         public Int64 IdentityNo { get; set; }    
         public string MemberName { get; set; }
         public int IsActive { get; set; }= 1;
-
+        public int IsMember { get; set; } = 1;
+       
     }
 }

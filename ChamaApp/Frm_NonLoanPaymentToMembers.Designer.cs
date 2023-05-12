@@ -1,6 +1,6 @@
 ﻿namespace ChamaApp
 {
-    partial class Frm_ReceiptMembers
+    partial class Frm_NonLoanPaymentToMembers
     {
         /// <summary>
         /// Required designer variable.
@@ -34,8 +34,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.txtCsbkId = new System.Windows.Forms.TextBox();
-            this.btnAdd = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lbl_AmountAllocated = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.btnRemoveSelectedIIems = new System.Windows.Forms.Button();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.MainGBox = new System.Windows.Forms.GroupBox();
             this.MemberCreditAddEditPanel = new System.Windows.Forms.Panel();
             this.btnDelete = new System.Windows.Forms.Button();
             this.lblMemberName = new System.Windows.Forms.Label();
@@ -48,11 +55,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.cboPayMode = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.lbl_AmountAllocated = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.lbl_AmountRemaining = new System.Windows.Forms.Label();
-            this.btnRemoveSelectedIIems = new System.Windows.Forms.Button();
             this.btnRemoveAllIIems = new System.Windows.Forms.Button();
             this.btnAddIem = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -60,55 +63,115 @@
             this.label3 = new System.Windows.Forms.Label();
             this.TxtItemAmount = new System.Windows.Forms.TextBox();
             this.dtgItems = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.MainGBox = new System.Windows.Forms.GroupBox();
             this.MemberCreditShowAllPanel = new System.Windows.Forms.Panel();
-            this.dtgMemberReceipts = new System.Windows.Forms.DataGridView();
+            this.dtgMemberPayments = new System.Windows.Forms.DataGridView();
             this.txtMemberId = new System.Windows.Forms.TextBox();
             this.cboMemberName = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.txtCsbkId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2.SuspendLayout();
+            this.MainGBox.SuspendLayout();
             this.MemberCreditAddEditPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgItems)).BeginInit();
-            this.panel2.SuspendLayout();
-            this.MainGBox.SuspendLayout();
             this.MemberCreditShowAllPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgMemberReceipts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgMemberPayments)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // txtCsbkId
+            // label11
             // 
-            this.txtCsbkId.Font = new System.Drawing.Font("Roboto Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCsbkId.Location = new System.Drawing.Point(446, 46);
-            this.txtCsbkId.Name = "txtCsbkId";
-            this.txtCsbkId.Size = new System.Drawing.Size(45, 23);
-            this.txtCsbkId.TabIndex = 8;
-            this.txtCsbkId.Visible = false;
-            this.txtCsbkId.WordWrap = false;
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.LightGray;
+            this.label11.Location = new System.Drawing.Point(529, 13);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(71, 17);
+            this.label11.TabIndex = 27;
+            this.label11.Text = "Allocated :";
             // 
-            // btnAdd
+            // lbl_AmountAllocated
             // 
-            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.ForeColor = System.Drawing.Color.LightGray;
-            this.btnAdd.Location = new System.Drawing.Point(14, 48);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(103, 29);
-            this.btnAdd.TabIndex = 4;
-            this.btnAdd.Text = "Add New";
-            this.btnAdd.UseVisualStyleBackColor = false;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.lbl_AmountAllocated.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl_AmountAllocated.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold);
+            this.lbl_AmountAllocated.ForeColor = System.Drawing.Color.LightSteelBlue;
+            this.lbl_AmountAllocated.Location = new System.Drawing.Point(451, 30);
+            this.lbl_AmountAllocated.Name = "lbl_AmountAllocated";
+            this.lbl_AmountAllocated.Size = new System.Drawing.Size(152, 23);
+            this.lbl_AmountAllocated.TabIndex = 26;
+            this.lbl_AmountAllocated.Text = "1,000,000.00";
+            this.lbl_AmountAllocated.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.LightGray;
+            this.label10.Location = new System.Drawing.Point(266, 13);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(79, 17);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "Remaining :";
+            // 
+            // btnRemoveSelectedIIems
+            // 
+            this.btnRemoveSelectedIIems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.btnRemoveSelectedIIems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveSelectedIIems.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveSelectedIIems.ForeColor = System.Drawing.Color.LightGray;
+            this.btnRemoveSelectedIIems.Location = new System.Drawing.Point(468, 186);
+            this.btnRemoveSelectedIIems.Name = "btnRemoveSelectedIIems";
+            this.btnRemoveSelectedIIems.Size = new System.Drawing.Size(144, 29);
+            this.btnRemoveSelectedIIems.TabIndex = 23;
+            this.btnRemoveSelectedIIems.Text = "Remove Selected";
+            this.btnRemoveSelectedIIems.UseVisualStyleBackColor = false;
+            this.btnRemoveSelectedIIems.Click += new System.EventHandler(this.btnRemoveSelectedIIems_Click);
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            // 
+            // Item
+            // 
+            this.Item.HeaderText = "Item";
+            this.Item.Name = "Item";
+            this.Item.ReadOnly = true;
+            // 
+            // Amount
+            // 
+            this.Amount.HeaderText = "Amount";
+            this.Amount.Name = "Amount";
+            this.Amount.ReadOnly = true;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.panel2.Controls.Add(this.MainGBox);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 45);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(800, 405);
+            this.panel2.TabIndex = 16;
+            // 
+            // MainGBox
+            // 
+            this.MainGBox.Controls.Add(this.MemberCreditAddEditPanel);
+            this.MainGBox.Controls.Add(this.MemberCreditShowAllPanel);
+            this.MainGBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainGBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.MainGBox.Location = new System.Drawing.Point(0, 0);
+            this.MainGBox.Name = "MainGBox";
+            this.MainGBox.Size = new System.Drawing.Size(800, 405);
+            this.MainGBox.TabIndex = 3;
+            this.MainGBox.TabStop = false;
             // 
             // MemberCreditAddEditPanel
             // 
@@ -127,9 +190,9 @@
             this.MemberCreditAddEditPanel.Controls.Add(this.label7);
             this.MemberCreditAddEditPanel.Controls.Add(this.cboPayMode);
             this.MemberCreditAddEditPanel.Controls.Add(this.groupBox1);
-            this.MemberCreditAddEditPanel.Location = new System.Drawing.Point(12, 167);
+            this.MemberCreditAddEditPanel.Location = new System.Drawing.Point(12, 175);
             this.MemberCreditAddEditPanel.Name = "MemberCreditAddEditPanel";
-            this.MemberCreditAddEditPanel.Size = new System.Drawing.Size(694, 378);
+            this.MemberCreditAddEditPanel.Size = new System.Drawing.Size(776, 359);
             this.MemberCreditAddEditPanel.TabIndex = 5;
             // 
             // btnDelete
@@ -233,7 +296,7 @@
             this.TxtTotalAmount.MaximumSize = new System.Drawing.Size(178, 25);
             this.TxtTotalAmount.MinimumSize = new System.Drawing.Size(178, 25);
             this.TxtTotalAmount.Name = "TxtTotalAmount";
-            this.TxtTotalAmount.Size = new System.Drawing.Size(178, 26);
+            this.TxtTotalAmount.Size = new System.Drawing.Size(178, 25);
             this.TxtTotalAmount.TabIndex = 33;
             this.TxtTotalAmount.Text = "0.00";
             this.TxtTotalAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -291,40 +354,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Items Allocation";
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.LightGray;
-            this.label11.Location = new System.Drawing.Point(529, 13);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(71, 17);
-            this.label11.TabIndex = 27;
-            this.label11.Text = "Allocated :";
-            // 
-            // lbl_AmountAllocated
-            // 
-            this.lbl_AmountAllocated.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbl_AmountAllocated.Font = new System.Drawing.Font("Roboto Medium", 12F, System.Drawing.FontStyle.Bold);
-            this.lbl_AmountAllocated.ForeColor = System.Drawing.Color.LightSteelBlue;
-            this.lbl_AmountAllocated.Location = new System.Drawing.Point(451, 30);
-            this.lbl_AmountAllocated.Name = "lbl_AmountAllocated";
-            this.lbl_AmountAllocated.Size = new System.Drawing.Size(152, 23);
-            this.lbl_AmountAllocated.TabIndex = 26;
-            this.lbl_AmountAllocated.Text = "1,000,000.00";
-            this.lbl_AmountAllocated.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.LightGray;
-            this.label10.Location = new System.Drawing.Point(266, 13);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(79, 17);
-            this.label10.TabIndex = 25;
-            this.label10.Text = "Remaining :";
-            // 
             // lbl_AmountRemaining
             // 
             this.lbl_AmountRemaining.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -336,20 +365,6 @@
             this.lbl_AmountRemaining.TabIndex = 24;
             this.lbl_AmountRemaining.Text = "1,000,000.00";
             this.lbl_AmountRemaining.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // btnRemoveSelectedIIems
-            // 
-            this.btnRemoveSelectedIIems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.btnRemoveSelectedIIems.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoveSelectedIIems.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveSelectedIIems.ForeColor = System.Drawing.Color.LightGray;
-            this.btnRemoveSelectedIIems.Location = new System.Drawing.Point(468, 186);
-            this.btnRemoveSelectedIIems.Name = "btnRemoveSelectedIIems";
-            this.btnRemoveSelectedIIems.Size = new System.Drawing.Size(144, 29);
-            this.btnRemoveSelectedIIems.TabIndex = 23;
-            this.btnRemoveSelectedIIems.Text = "Remove Selected";
-            this.btnRemoveSelectedIIems.UseVisualStyleBackColor = false;
-            this.btnRemoveSelectedIIems.Click += new System.EventHandler(this.btnRemoveSelectedIIems_Click);
             // 
             // btnRemoveAllIIems
             // 
@@ -462,52 +477,12 @@
             this.dtgItems.Size = new System.Drawing.Size(343, 124);
             this.dtgItems.TabIndex = 21;
             // 
-            // Id
-            // 
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            // 
-            // Item
-            // 
-            this.Item.HeaderText = "Item";
-            this.Item.Name = "Item";
-            this.Item.ReadOnly = true;
-            // 
-            // Amount
-            // 
-            this.Amount.HeaderText = "Amount";
-            this.Amount.Name = "Amount";
-            this.Amount.ReadOnly = true;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
-            this.panel2.Controls.Add(this.MainGBox);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 45);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(718, 424);
-            this.panel2.TabIndex = 11;
-            // 
-            // MainGBox
-            // 
-            this.MainGBox.Controls.Add(this.MemberCreditAddEditPanel);
-            this.MainGBox.Controls.Add(this.MemberCreditShowAllPanel);
-            this.MainGBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainGBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.MainGBox.Location = new System.Drawing.Point(0, 0);
-            this.MainGBox.Name = "MainGBox";
-            this.MainGBox.Size = new System.Drawing.Size(718, 424);
-            this.MainGBox.TabIndex = 3;
-            this.MainGBox.TabStop = false;
-            // 
             // MemberCreditShowAllPanel
             // 
             this.MemberCreditShowAllPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.MemberCreditShowAllPanel.Controls.Add(this.dtgMemberReceipts);
+            this.MemberCreditShowAllPanel.Controls.Add(this.dtgMemberPayments);
             this.MemberCreditShowAllPanel.Controls.Add(this.txtMemberId);
             this.MemberCreditShowAllPanel.Controls.Add(this.cboMemberName);
             this.MemberCreditShowAllPanel.Controls.Add(this.label2);
@@ -515,20 +490,20 @@
             this.MemberCreditShowAllPanel.Controls.Add(this.txtCsbkId);
             this.MemberCreditShowAllPanel.Location = new System.Drawing.Point(32, 19);
             this.MemberCreditShowAllPanel.Name = "MemberCreditShowAllPanel";
-            this.MemberCreditShowAllPanel.Size = new System.Drawing.Size(653, 322);
+            this.MemberCreditShowAllPanel.Size = new System.Drawing.Size(735, 303);
             this.MemberCreditShowAllPanel.TabIndex = 2;
             // 
-            // dtgMemberReceipts
+            // dtgMemberPayments
             // 
-            this.dtgMemberReceipts.AllowUserToAddRows = false;
-            this.dtgMemberReceipts.AllowUserToDeleteRows = false;
-            this.dtgMemberReceipts.AllowUserToResizeColumns = false;
-            this.dtgMemberReceipts.AllowUserToResizeRows = false;
+            this.dtgMemberPayments.AllowUserToAddRows = false;
+            this.dtgMemberPayments.AllowUserToDeleteRows = false;
+            this.dtgMemberPayments.AllowUserToResizeColumns = false;
+            this.dtgMemberPayments.AllowUserToResizeRows = false;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.Gainsboro;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtgMemberReceipts.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dtgMemberReceipts.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dtgMemberReceipts.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dtgMemberPayments.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dtgMemberPayments.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dtgMemberPayments.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -536,9 +511,9 @@
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgMemberReceipts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dtgMemberReceipts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgMemberReceipts.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dtgMemberPayments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dtgMemberPayments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgMemberPayments.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -546,15 +521,15 @@
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgMemberReceipts.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dtgMemberReceipts.EnableHeadersVisualStyles = false;
-            this.dtgMemberReceipts.Location = new System.Drawing.Point(21, 95);
-            this.dtgMemberReceipts.Name = "dtgMemberReceipts";
-            this.dtgMemberReceipts.ReadOnly = true;
-            this.dtgMemberReceipts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgMemberReceipts.Size = new System.Drawing.Size(617, 160);
-            this.dtgMemberReceipts.TabIndex = 9;
-            this.dtgMemberReceipts.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtgMemberReceipts_RowHeaderMouseDoubleClick);
+            this.dtgMemberPayments.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dtgMemberPayments.EnableHeadersVisualStyles = false;
+            this.dtgMemberPayments.Location = new System.Drawing.Point(21, 95);
+            this.dtgMemberPayments.Name = "dtgMemberPayments";
+            this.dtgMemberPayments.ReadOnly = true;
+            this.dtgMemberPayments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgMemberPayments.Size = new System.Drawing.Size(617, 160);
+            this.dtgMemberPayments.TabIndex = 9;
+            this.dtgMemberPayments.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtgMemberPayments_RowHeaderMouseDoubleClick);
             // 
             // txtMemberId
             // 
@@ -565,11 +540,10 @@
             // 
             // cboMemberName
             // 
-            this.cboMemberName.Font = new System.Drawing.Font("Roboto Medium", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboMemberName.FormattingEnabled = true;
             this.cboMemberName.Location = new System.Drawing.Point(123, 8);
             this.cboMemberName.Name = "cboMemberName";
-            this.cboMemberName.Size = new System.Drawing.Size(515, 26);
+            this.cboMemberName.Size = new System.Drawing.Size(515, 21);
             this.cboMemberName.TabIndex = 7;
             this.cboMemberName.SelectedIndexChanged += new System.EventHandler(this.cboMemberName_SelectedIndexChanged);
             // 
@@ -581,12 +555,36 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.LightGray;
-            this.label2.Location = new System.Drawing.Point(11, 12);
+            this.label2.Location = new System.Drawing.Point(11, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(106, 17);
             this.label2.TabIndex = 6;
             this.label2.Text = "Member Name :";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(30)))), ((int)(((byte)(45)))));
+            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.Color.LightGray;
+            this.btnAdd.Location = new System.Drawing.Point(14, 48);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(103, 29);
+            this.btnAdd.TabIndex = 4;
+            this.btnAdd.Text = "Add New";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // txtCsbkId
+            // 
+            this.txtCsbkId.Font = new System.Drawing.Font("Roboto Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCsbkId.Location = new System.Drawing.Point(446, 46);
+            this.txtCsbkId.Name = "txtCsbkId";
+            this.txtCsbkId.Size = new System.Drawing.Size(45, 23);
+            this.txtCsbkId.TabIndex = 8;
+            this.txtCsbkId.Visible = false;
+            this.txtCsbkId.WordWrap = false;
             // 
             // label1
             // 
@@ -595,42 +593,32 @@
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Hoefler Text Black", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.LightGray;
-            this.label1.Location = new System.Drawing.Point(275, 0);
+            this.label1.Location = new System.Drawing.Point(357, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(443, 45);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Member Credit Transactions";
+            this.label1.Text = "Deductible Pay To Members";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button4
             // 
             this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(353, 422);
+            this.button4.Location = new System.Drawing.Point(353, 418);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(116, 36);
-            this.button4.TabIndex = 9;
+            this.button4.TabIndex = 14;
             this.button4.Text = "button4";
             this.button4.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
             this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(475, 422);
+            this.button3.Location = new System.Drawing.Point(475, 418);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(116, 36);
-            this.button3.TabIndex = 8;
+            this.button3.TabIndex = 13;
             this.button3.Text = "button3";
             this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(597, 422);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(91, 36);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // btnClose
             // 
@@ -654,81 +642,78 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(718, 45);
-            this.panel1.TabIndex = 10;
+            this.panel1.Size = new System.Drawing.Size(800, 45);
+            this.panel1.TabIndex = 15;
             // 
-            // Frm_ReceiptMembers
+            // Frm_NonLoanPaymentToMembers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(718, 469);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Frm_ReceiptMembers";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Frm_ReceiptMembers";
-            this.Load += new System.EventHandler(this.Frm_ReceiptMembers_Load);
+            this.Name = "Frm_NonLoanPaymentToMembers";
+            this.Text = "Frm_NonLoanPaymentToMembers";
+            this.Load += new System.EventHandler(this.Frm_NonLoanPaymentToMembers_Load);
+            this.panel2.ResumeLayout(false);
+            this.MainGBox.ResumeLayout(false);
             this.MemberCreditAddEditPanel.ResumeLayout(false);
             this.MemberCreditAddEditPanel.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgItems)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.MainGBox.ResumeLayout(false);
             this.MemberCreditShowAllPanel.ResumeLayout(false);
             this.MemberCreditShowAllPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgMemberReceipts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgMemberPayments)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.TextBox txtCsbkId;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Panel MemberCreditAddEditPanel;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.GroupBox MainGBox;
-        private System.Windows.Forms.Panel MemberCreditShowAllPanel;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ComboBox cboMemberName;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox TxtItemAmount;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox cboItemName;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnAddIem;
+
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lbl_AmountAllocated;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label lbl_AmountRemaining;
         private System.Windows.Forms.Button btnRemoveSelectedIIems;
-        private System.Windows.Forms.Button btnRemoveAllIIems;
-        private System.Windows.Forms.DataGridView dtgItems;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Item;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.GroupBox MainGBox;
+        private System.Windows.Forms.Panel MemberCreditAddEditPanel;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Label lblMemberName;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.DateTimePicker dtpTransDate;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox TxtTotalAmount;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cboPayMode;
-        private System.Windows.Forms.Label lblMemberName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Item;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lbl_AmountRemaining;
+        private System.Windows.Forms.Button btnRemoveAllIIems;
+        private System.Windows.Forms.Button btnAddIem;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cboItemName;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox TxtItemAmount;
+        private System.Windows.Forms.DataGridView dtgItems;
+        private System.Windows.Forms.Panel MemberCreditShowAllPanel;
+        private System.Windows.Forms.DataGridView dtgMemberPayments;
         private System.Windows.Forms.TextBox txtMemberId;
-        private System.Windows.Forms.DataGridView dtgMemberReceipts;
+        private System.Windows.Forms.ComboBox cboMemberName;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.TextBox txtCsbkId;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Panel panel1;
     }
 }

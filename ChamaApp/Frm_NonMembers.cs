@@ -9,28 +9,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace ChamaApp
 {
-    public partial class Frm_Members : Form
+    public partial class Frm_NonMembers : Form
     {
         private bool EditMode = false;
 
         private List<MemberModel> Members = null;
         private void LoadMembers()
         {
-            Members = SqliteDataAccess.GetALLMembers();
+            Members = SqliteDataAccess.GetALLNonMembers();
             dtgMembers.DataSource = Members;
             dtgMembers.Columns[0].Visible = false;
             dtgMembers.Columns[4].Visible = false;
         }
-        public Frm_Members()
+        public Frm_NonMembers()
         {
             InitializeComponent();
         }
 
-        private void Frm_Members_Load(object sender, EventArgs e)
+        private void Frm_NonMembers_Load(object sender, EventArgs e)
         {
             ShowAllPanel();
         }
@@ -89,70 +88,70 @@ namespace ChamaApp
 
             if (string.IsNullOrEmpty(txtIdNumber.Text.Trim()))
             {
-                MessageBox.Show("Id Number Cannot be Empty", "@Chamaz", MessageBoxButtons.OK);
+                MessageBox.Show("Number Cannot be Empty", "@Chamaz", MessageBoxButtons.OK);
                 txtIdNumber.Focus();
                 return;
             }
-            if (!Int64.TryParse(txtIdNumber.Text.Trim(),out Int64 _))
+            if (!Int64.TryParse(txtIdNumber.Text.Trim(), out Int64 _))
             {
-                MessageBox.Show("Id Number should be Numeric", "@Chamaz", MessageBoxButtons.OK);
+                MessageBox.Show("Number should be Numeric", "@Chamaz", MessageBoxButtons.OK);
                 txtIdNumber.Focus();
                 return;
             }
-            if (SqliteDataAccess.CheckIfIdNumberExist(Int64.Parse(txtIdNumber.Text.Trim()),int.Parse(txtId.Text.Trim())))
+            if (SqliteDataAccess.CheckIfNonMemberIdNumberExist(Int64.Parse(txtIdNumber.Text.Trim()), int.Parse(txtId.Text.Trim())))
             {
-                MessageBox.Show("Id Number is already in use", "@Chamaz", MessageBoxButtons.OK);
+                MessageBox.Show("Number is already in use", "@Chamaz", MessageBoxButtons.OK);
                 txtIdNumber.Focus();
                 return;
             }
             if (string.IsNullOrEmpty(txtMemberName.Text.Trim()))
             {
-                MessageBox.Show("Member Name Cannot be Empty", "@Chamaz", MessageBoxButtons.OK);
+                MessageBox.Show("Non Member Name Cannot be Empty", "@Chamaz", MessageBoxButtons.OK);
                 txtMemberName.Focus();
                 return;
             }
 
-            if (SqliteDataAccess.CheckIfMemberExist(txtMemberName.Text.Trim(), int.Parse(txtId.Text.Trim())))
+            if (SqliteDataAccess.CheckIfNonMemberExist(txtMemberName.Text.Trim(), int.Parse(txtId.Text.Trim())))
             {
-                MessageBox.Show("Member Name is already in use", "@Chamaz", MessageBoxButtons.OK);
+                MessageBox.Show("Non Member Name is already in use", "@Chamaz", MessageBoxButtons.OK);
                 txtMemberName.Focus();
                 return;
             }
-            
-                
 
-                MemberModel Member = new MemberModel()
+
+
+            MemberModel Member = new MemberModel()
             {
                 Id = Convert.ToInt32(txtId.Text.Trim()),
                 IdentityNo = Convert.ToInt64(txtIdNumber.Text.Trim()),
                 MemberName = SqliteDataAccess.ToPropercase(txtMemberName.Text.Trim()),
-                IsActive=((int)chkActive.CheckState),
-                IsMember = 1
-                };
+                IsActive = ((int)chkActive.CheckState),
+                IsMember = 0
+            };
 
             if (EditMode) //update data
             {
-                if (SqliteDataAccess.UpdateMember(Member) > 0)
+                if (SqliteDataAccess.UpdateNonMember(Member) > 0)
                 {
-                    MessageBox.Show($"Member : {txtMemberName.Text.Trim()} Updated", "@Chamaz", MessageBoxButtons.OK);
+                    MessageBox.Show($" {txtMemberName.Text.Trim()} Details Updated", "@Chamaz", MessageBoxButtons.OK);
 
                 }
                 else
                 {
-                    MessageBox.Show($"Failed to Update Member : {txtMemberName.Text.Trim()}", "@Chamaz", MessageBoxButtons.OK);
+                    MessageBox.Show($"Failed to Update : {txtMemberName.Text.Trim()} Details", "@Chamaz", MessageBoxButtons.OK);
                 }
             }
             else //save new record
             {
-               
-                if (SqliteDataAccess.InsertMember(Member) > 0)
+
+                if (SqliteDataAccess.InsertNonMember(Member) > 0)
                 {
-                    MessageBox.Show($"Member : {txtMemberName.Text.Trim()} Added", "@Chamaz", MessageBoxButtons.OK);
+                    MessageBox.Show($" {txtMemberName.Text.Trim()} Added", "@Chamaz", MessageBoxButtons.OK);
 
                 }
                 else
                 {
-                    MessageBox.Show($"Failed to Add Member : {txtMemberName.Text.Trim()}", "@Chamaz", MessageBoxButtons.OK);
+                    MessageBox.Show($"Failed to Add : {txtMemberName.Text.Trim()}", "@Chamaz", MessageBoxButtons.OK);
                 }
             }
 
@@ -167,7 +166,7 @@ namespace ChamaApp
         private void dtgMembers_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             DataGridViewRow dtgrow = dtgMembers.CurrentRow;
-            txtId.Text = dtgrow.Cells[0].Value.ToString(); 
+            txtId.Text = dtgrow.Cells[0].Value.ToString();
             txtIdNumber.Text = dtgrow.Cells[1].Value.ToString();
             txtMemberName.Text = dtgrow.Cells[2].Value.ToString();
             Int64 val = Int64.Parse(dtgrow.Cells[3].Value.ToString());
@@ -177,20 +176,19 @@ namespace ChamaApp
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show($"Are you sure to detete Member :  {txtMemberName.Text.Trim()}", "@Chamaz", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show($"Are you sure to detete Non Member :  {txtMemberName.Text.Trim()}", "@Chamaz", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
 
-                if (SqliteDataAccess.DeleteMember(Convert.ToInt32(txtId.Text.Trim())) > 0)
+                if (SqliteDataAccess.DeleteNonMember(Convert.ToInt32(txtId.Text.Trim())) > 0)
                 {
-                    MessageBox.Show($"Member : {txtMemberName.Text.Trim()} Deleted", "@Chamaz", MessageBoxButtons.OK);
+                    MessageBox.Show($"Non Member : {txtMemberName.Text.Trim()} Deleted", "@Chamaz", MessageBoxButtons.OK);
                 }
                 else
                 {
-                    MessageBox.Show($"Failed to Delete Member : {txtMemberName.Text.Trim()}", "@Chamaz", MessageBoxButtons.OK);
+                    MessageBox.Show($"Failed to Delete Non Member : {txtMemberName.Text.Trim()}", "@Chamaz", MessageBoxButtons.OK);
                 }
             }
             ShowAllPanel();
         }
     }
-    
 }

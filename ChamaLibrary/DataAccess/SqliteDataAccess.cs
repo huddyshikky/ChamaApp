@@ -165,7 +165,7 @@ namespace ChamaLibrary.DataAccess
             {
                 using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
                 {
-                    var OutPut = cnn.Query<MemberModel>("Select * From Members", new DynamicParameters());
+                    var OutPut = cnn.Query<MemberModel>("Select * From Members where IsMember=1", new DynamicParameters());
                     return OutPut.ToList();
                 }
             }
@@ -191,7 +191,7 @@ namespace ChamaLibrary.DataAccess
                 catch (Exception)
                 {
                     check = true;
-                    MessageBox.Show(" Error checking related LoanType", "Esent@ Accountant", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(" Error checking related Member", "Esent@ Accountant", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             return check;
@@ -221,7 +221,7 @@ namespace ChamaLibrary.DataAccess
             {
                 using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
                 {
-                    var OutPut = cnn.QuerySingleOrDefault<MemberModel>("Select * From Members where MemberName=@MemberName", new { MemberName = ToPropercase(MemberName) });
+                    var OutPut = cnn.QuerySingleOrDefault<MemberModel>("Select * From Members where MemberName=@MemberName and IsMember=1", new { MemberName = ToPropercase(MemberName) });
                     if (OutPut == null)
                     {
                         return null;
@@ -247,7 +247,7 @@ namespace ChamaLibrary.DataAccess
             {
                 using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
                 {
-                    var result = cnn.QueryFirstOrDefault<MemberModel>("Select * From Members where Id=@Id", new { Id = Id });
+                    var result = cnn.QueryFirstOrDefault<MemberModel>("Select * From Members where Id=@Id and IsMember=1", new { Id = Id });
                     return result;
                 }
             }
@@ -265,7 +265,7 @@ namespace ChamaLibrary.DataAccess
             {
                 using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
                 {
-                    var result = cnn.Execute("insert into Members(IdentityNo,MemberName) values(@IdentityNo,@MemberName)", Member);
+                    var result = cnn.Execute("insert into Members(IdentityNo,MemberName,IsActive,IsMember) values(@IdentityNo,@MemberName,@IsActive,@IsMember)", Member);
                     return result;
                 }
             }
@@ -280,7 +280,7 @@ namespace ChamaLibrary.DataAccess
             {
                 using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
                 {
-                    var result = cnn.Execute("update Members set MemberName=@MemberName where Id=@Id", Member);
+                    var result = cnn.Execute("update Members set MemberName=@MemberName,IsActive=@IsActive,IsMember=@IsMember where Id=@Id", Member);
                     return result;
                 }
             }
@@ -308,6 +308,157 @@ namespace ChamaLibrary.DataAccess
             }
         }
 
+        //NonMembers
+
+        public static List<MemberModel> GetALLNonMembers()
+        {
+            try
+            {
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    var OutPut = cnn.Query<MemberModel>("Select * From Members where IsMember=0", new DynamicParameters());
+                    return OutPut.ToList();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+
+
+            }
+        }
+        public static bool CheckIfNonMemberExist(string MemberName, int Id)
+        {
+            bool check = false;
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                try
+                {
+                    int Found = cnn.ExecuteScalar<int>("select count(*) from Members WHERE MemberName=@MemberName and Id<>@Id", new { MemberName = ToPropercase(MemberName), Id = Id });
+                    if (Found > 0) { check = true; }
+
+                }
+                catch (Exception)
+                {
+                    check = true;
+                    MessageBox.Show(" Error checking related Non Member", "Esent@ Accountant", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            return check;
+        }
+        public static bool CheckIfNonMemberIdNumberExist(Int64 IdentityNo, int Id)
+        {
+            bool check = false;
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                try
+                {
+                    int Found = cnn.ExecuteScalar<int>("select count(*) from Members WHERE IdentityNo=@IdNumber and Id<>@Id", new { IdNumber = IdentityNo, Id = Id });
+                    if (Found > 0) { check = true; }
+
+                }
+                catch (Exception)
+                {
+                    check = true;
+                    MessageBox.Show(" Error checking related Id Number", "Esent@ Accountant", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            return check;
+        }
+        public static MemberModel GetNonMemberByName(string MemberName)
+        {
+            try
+            {
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    var OutPut = cnn.QuerySingleOrDefault<MemberModel>("Select * From Members where MemberName=@MemberName and IsMember=0", new { MemberName = ToPropercase(MemberName) });
+                    if (OutPut == null)
+                    {
+                        return null;
+                    }
+                    else
+                    {
+                        return OutPut;
+                    }
+
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+
+
+            }
+        }
+        public static MemberModel GetNonMemberById(int Id)
+        {
+            try
+            {
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    var result = cnn.QueryFirstOrDefault<MemberModel>("Select * From Members where Id=@Id and IsMember=0", new { Id = Id });
+                    return result;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+
+
+            }
+        }
+        public static int InsertNonMember(MemberModel Member)
+        {
+            try
+            {
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    var result = cnn.Execute("insert into Members(IdentityNo,MemberName,IsActive,IsMember) values(@IdentityNo,@MemberName,@IsActive,@IsMember)", Member);
+                    return result;
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
+        public static int UpdateNonMember(MemberModel Member)
+        {
+            try
+            {
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    var result = cnn.Execute("update Members set MemberName=@MemberName,IsActive=@IsActive,IsMember=@IsMember where Id=@Id", Member);
+                    return result;
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+
+
+        }
+        public static int DeleteNonMember(int Id)
+        {
+            try
+            {
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    var result = cnn.Execute("delete from Members where Id=@Id", new { Id = Id });
+                    return result;
+                }
+
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
+        
         //Loan Types
 
         public static List<LoanTypeModel> GetALLLoanTypes()
@@ -457,13 +608,49 @@ namespace ChamaLibrary.DataAccess
 
             }
         }
-        public static List<CashBookModel> GetCashBookByMemberId(int Member_Id)
+        public static List<CashBookModel> GetALLCashBookOtherPayment()
         {
             try
             {
                 using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
                 {
-                    var result = cnn.Query<CashBookModel>("Select * From CashBooks where Member_Id=@Member_Id", new { Member_Id = Member_Id });
+                    var OutPut = cnn.Query<CashBookModel>("Select * From CashBooks where TransType='Debit' And TransCategory ='OtherPayments'", new {});
+                    return OutPut.ToList();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+
+
+            }
+        }
+        public static List<CashBookModel> GetALLCashBookByTransType(string TransType)
+        {
+            try
+            {
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    var OutPut = cnn.Query<CashBookModel>("Select * From CashBooks where TransType=@TransType", new { TransType= TransType });
+                    return OutPut.ToList();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+
+
+            }
+        }
+        public static List<CashBookModel> GetCashBookByMemberId(int Member_Id, string TransType)
+        {
+            try
+            {
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    var result = cnn.Query<CashBookModel>("Select * From CashBooks where Member_Id=@Member_Id AND TransType=@TransType", new { Member_Id = Member_Id, TransType= TransType });
                     return result.ToList();
                 }
             }
@@ -502,8 +689,8 @@ namespace ChamaLibrary.DataAccess
                     cnn.Open();
                     using (var Trans = cnn.BeginTransaction())
                     {
-                        int CsbkId = cnn.ExecuteScalar<int>("insert into CashBooks(Member_Id,Trans_Date,Paymode,TransType,TransCategory) " +
-                            "values(@Member_Id,@Trans_Date,@Paymode,@TransType,@TransCategory); SELECT last_insert_rowid();", CashBook);
+                        int CsbkId = cnn.ExecuteScalar<int>("insert into CashBooks(Member_Id,Name,Trans_Date,Paymode,TransType,TransCategory,Amount) " +
+                            "values(@Member_Id,@Name,@Trans_Date,@Paymode,@TransType,@TransCategory,@Amount); SELECT last_insert_rowid();", CashBook);
                         if (CsbkId > 0)
                         {
                             foreach (var cashBookDetails in cashBookDetailsList)
@@ -542,7 +729,7 @@ namespace ChamaLibrary.DataAccess
                     cnn.Open();
                     using (var Trans = cnn.BeginTransaction())
                     {
-                       var result = cnn.Execute("update CashBooks set Trans_Date=@Trans_Date,Paymode=@Paymode where Id=@Id", CashBook);
+                       var result = cnn.Execute("update CashBooks set Name=@Name,Trans_Date=@Trans_Date,Paymode=@Paymode,Amount=@Amount where Id=@Id", CashBook);
 
                         if (result > 0)
                         {

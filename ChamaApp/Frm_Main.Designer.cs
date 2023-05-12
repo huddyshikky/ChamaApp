@@ -38,30 +38,32 @@
             this.btnIssueLoan = new System.Windows.Forms.Button();
             this.btnLoanManagement = new System.Windows.Forms.Button();
             this.panelTransactionsSubMenu = new System.Windows.Forms.Panel();
-            this.btnPayments = new System.Windows.Forms.Button();
+            this.btnMemberPayments = new System.Windows.Forms.Button();
             this.btnReceiptOthers = new System.Windows.Forms.Button();
             this.btnReceiptMembers = new System.Windows.Forms.Button();
             this.btnTransactions = new System.Windows.Forms.Button();
             this.panelRegistrationSubMenu = new System.Windows.Forms.Panel();
+            this.btnNonMembers = new System.Windows.Forms.Button();
             this.btnMembers = new System.Windows.Forms.Button();
             this.btnLoanType = new System.Windows.Forms.Button();
             this.btnVotes = new System.Windows.Forms.Button();
             this.btnRegistration = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panelStatusBar = new System.Windows.Forms.Panel();
             this.panelChildForm = new System.Windows.Forms.Panel();
+            this.btnOtherPayments = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panelSideMenu.SuspendLayout();
             this.panelUserSubMenu.SuspendLayout();
             this.panelLoanSubMenu.SuspendLayout();
             this.panelTransactionsSubMenu.SuspendLayout();
             this.panelRegistrationSubMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelChildForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panelSideMenu
@@ -89,7 +91,7 @@
             this.panelUserSubMenu.Controls.Add(this.btnAssignRoles);
             this.panelUserSubMenu.Controls.Add(this.btnRegisterNonMembers);
             this.panelUserSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelUserSubMenu.Location = new System.Drawing.Point(0, 599);
+            this.panelUserSubMenu.Location = new System.Drawing.Point(0, 672);
             this.panelUserSubMenu.Name = "panelUserSubMenu";
             this.panelUserSubMenu.Size = new System.Drawing.Size(233, 88);
             this.panelUserSubMenu.TabIndex = 7;
@@ -138,7 +140,7 @@
             this.btnUserManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUserManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnUserManagement.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnUserManagement.Location = new System.Drawing.Point(0, 554);
+            this.btnUserManagement.Location = new System.Drawing.Point(0, 627);
             this.btnUserManagement.Name = "btnUserManagement";
             this.btnUserManagement.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnUserManagement.Size = new System.Drawing.Size(233, 45);
@@ -154,7 +156,7 @@
             this.panelLoanSubMenu.Controls.Add(this.btnRepayLoan);
             this.panelLoanSubMenu.Controls.Add(this.btnIssueLoan);
             this.panelLoanSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelLoanSubMenu.Location = new System.Drawing.Point(0, 468);
+            this.panelLoanSubMenu.Location = new System.Drawing.Point(0, 541);
             this.panelLoanSubMenu.Name = "panelLoanSubMenu";
             this.panelLoanSubMenu.Size = new System.Drawing.Size(233, 86);
             this.panelLoanSubMenu.TabIndex = 5;
@@ -203,7 +205,7 @@
             this.btnLoanManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLoanManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnLoanManagement.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnLoanManagement.Location = new System.Drawing.Point(0, 423);
+            this.btnLoanManagement.Location = new System.Drawing.Point(0, 496);
             this.btnLoanManagement.Name = "btnLoanManagement";
             this.btnLoanManagement.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnLoanManagement.Size = new System.Drawing.Size(233, 45);
@@ -216,32 +218,33 @@
             // panelTransactionsSubMenu
             // 
             this.panelTransactionsSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.panelTransactionsSubMenu.Controls.Add(this.btnPayments);
+            this.panelTransactionsSubMenu.Controls.Add(this.btnOtherPayments);
+            this.panelTransactionsSubMenu.Controls.Add(this.btnMemberPayments);
             this.panelTransactionsSubMenu.Controls.Add(this.btnReceiptOthers);
             this.panelTransactionsSubMenu.Controls.Add(this.btnReceiptMembers);
             this.panelTransactionsSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTransactionsSubMenu.Location = new System.Drawing.Point(0, 297);
+            this.panelTransactionsSubMenu.Location = new System.Drawing.Point(0, 330);
             this.panelTransactionsSubMenu.Name = "panelTransactionsSubMenu";
-            this.panelTransactionsSubMenu.Size = new System.Drawing.Size(233, 126);
+            this.panelTransactionsSubMenu.Size = new System.Drawing.Size(233, 166);
             this.panelTransactionsSubMenu.TabIndex = 3;
             // 
-            // btnPayments
+            // btnMemberPayments
             // 
-            this.btnPayments.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnPayments.FlatAppearance.BorderSize = 0;
-            this.btnPayments.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(122)))), ((int)(((byte)(87)))));
-            this.btnPayments.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPayments.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnPayments.ForeColor = System.Drawing.Color.LightGray;
-            this.btnPayments.Location = new System.Drawing.Point(0, 80);
-            this.btnPayments.Name = "btnPayments";
-            this.btnPayments.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnPayments.Size = new System.Drawing.Size(233, 40);
-            this.btnPayments.TabIndex = 3;
-            this.btnPayments.Text = "Payments";
-            this.btnPayments.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPayments.UseVisualStyleBackColor = true;
-            this.btnPayments.Click += new System.EventHandler(this.btnPayments_Click);
+            this.btnMemberPayments.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnMemberPayments.FlatAppearance.BorderSize = 0;
+            this.btnMemberPayments.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(122)))), ((int)(((byte)(87)))));
+            this.btnMemberPayments.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMemberPayments.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnMemberPayments.ForeColor = System.Drawing.Color.LightGray;
+            this.btnMemberPayments.Location = new System.Drawing.Point(0, 80);
+            this.btnMemberPayments.Name = "btnMemberPayments";
+            this.btnMemberPayments.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnMemberPayments.Size = new System.Drawing.Size(233, 40);
+            this.btnMemberPayments.TabIndex = 3;
+            this.btnMemberPayments.Text = "Payment To Member ";
+            this.btnMemberPayments.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMemberPayments.UseVisualStyleBackColor = true;
+            this.btnMemberPayments.Click += new System.EventHandler(this.btnPayments_Click);
             // 
             // btnReceiptOthers
             // 
@@ -287,7 +290,7 @@
             this.btnTransactions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTransactions.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnTransactions.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnTransactions.Location = new System.Drawing.Point(0, 252);
+            this.btnTransactions.Location = new System.Drawing.Point(0, 285);
             this.btnTransactions.Name = "btnTransactions";
             this.btnTransactions.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnTransactions.Size = new System.Drawing.Size(233, 45);
@@ -300,14 +303,33 @@
             // panelRegistrationSubMenu
             // 
             this.panelRegistrationSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.panelRegistrationSubMenu.Controls.Add(this.btnNonMembers);
             this.panelRegistrationSubMenu.Controls.Add(this.btnMembers);
             this.panelRegistrationSubMenu.Controls.Add(this.btnLoanType);
             this.panelRegistrationSubMenu.Controls.Add(this.btnVotes);
             this.panelRegistrationSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelRegistrationSubMenu.Location = new System.Drawing.Point(0, 120);
             this.panelRegistrationSubMenu.Name = "panelRegistrationSubMenu";
-            this.panelRegistrationSubMenu.Size = new System.Drawing.Size(233, 132);
+            this.panelRegistrationSubMenu.Size = new System.Drawing.Size(233, 165);
             this.panelRegistrationSubMenu.TabIndex = 1;
+            // 
+            // btnNonMembers
+            // 
+            this.btnNonMembers.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnNonMembers.FlatAppearance.BorderSize = 0;
+            this.btnNonMembers.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(122)))), ((int)(((byte)(87)))));
+            this.btnNonMembers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNonMembers.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnNonMembers.ForeColor = System.Drawing.Color.LightGray;
+            this.btnNonMembers.Location = new System.Drawing.Point(0, 120);
+            this.btnNonMembers.Name = "btnNonMembers";
+            this.btnNonMembers.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnNonMembers.Size = new System.Drawing.Size(233, 40);
+            this.btnNonMembers.TabIndex = 4;
+            this.btnNonMembers.Text = "Non Members";
+            this.btnNonMembers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNonMembers.UseVisualStyleBackColor = true;
+            this.btnNonMembers.Click += new System.EventHandler(this.btnNonMembers_Click);
             // 
             // btnMembers
             // 
@@ -392,16 +414,6 @@
             this.panelLogo.Size = new System.Drawing.Size(233, 75);
             this.panelLogo.TabIndex = 1;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::ChamaApp.Properties.Resources.group;
-            this.pictureBox2.Location = new System.Drawing.Point(155, 16);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(68, 49);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -432,6 +444,24 @@
             this.panelChildForm.Size = new System.Drawing.Size(734, 508);
             this.panelChildForm.TabIndex = 2;
             // 
+            // btnOtherPayments
+            // 
+            this.btnOtherPayments.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnOtherPayments.FlatAppearance.BorderSize = 0;
+            this.btnOtherPayments.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(122)))), ((int)(((byte)(87)))));
+            this.btnOtherPayments.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOtherPayments.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnOtherPayments.ForeColor = System.Drawing.Color.LightGray;
+            this.btnOtherPayments.Location = new System.Drawing.Point(0, 120);
+            this.btnOtherPayments.Name = "btnOtherPayments";
+            this.btnOtherPayments.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnOtherPayments.Size = new System.Drawing.Size(233, 40);
+            this.btnOtherPayments.TabIndex = 4;
+            this.btnOtherPayments.Text = "Other Payments";
+            this.btnOtherPayments.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOtherPayments.UseVisualStyleBackColor = true;
+            this.btnOtherPayments.Click += new System.EventHandler(this.btnOtherPayments_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -442,6 +472,16 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::ChamaApp.Properties.Resources.group;
+            this.pictureBox2.Location = new System.Drawing.Point(155, 16);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(68, 49);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
             // 
             // FrmMain
             // 
@@ -455,8 +495,9 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(950, 600);
             this.Name = "FrmMain";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
             this.Text = "ChamaApp";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panelSideMenu.ResumeLayout(false);
             this.panelUserSubMenu.ResumeLayout(false);
             this.panelLoanSubMenu.ResumeLayout(false);
@@ -464,9 +505,9 @@
             this.panelRegistrationSubMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
             this.panelLogo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelChildForm.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -481,7 +522,7 @@
         private System.Windows.Forms.Button btnVotes;
         private System.Windows.Forms.Button btnTransactions;
         private System.Windows.Forms.Panel panelTransactionsSubMenu;
-        private System.Windows.Forms.Button btnPayments;
+        private System.Windows.Forms.Button btnMemberPayments;
         private System.Windows.Forms.Button btnReceiptOthers;
         private System.Windows.Forms.Button btnReceiptMembers;
         private System.Windows.Forms.Panel panelLoanSubMenu;
@@ -498,6 +539,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnNonMembers;
+        private System.Windows.Forms.Button btnOtherPayments;
     }
 }
 

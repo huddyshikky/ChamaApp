@@ -61,17 +61,53 @@
     <Compile Include="FrmVoteMaterial.Designer.cs">
       <DependentUpon>FrmVoteMaterial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_LoanProcessing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_LoanProcessing.Designer.cs">
+      <DependentUpon>Frm_LoanProcessing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_LoanRepayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_LoanRepayment.Designer.cs">
+      <DependentUpon>Frm_LoanRepayment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Members.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frm_Members.Designer.cs">
       <DependentUpon>Frm_Members.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_NonLoanPaymentToMembers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_NonLoanPaymentToMembers.Designer.cs">
+      <DependentUpon>Frm_NonLoanPaymentToMembers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_NonMembers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_NonMembers.Designer.cs">
+      <DependentUpon>Frm_NonMembers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_OtherPayments.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_OtherPayments.Designer.cs">
+      <DependentUpon>Frm_OtherPayments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_ReceiptMembers.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frm_ReceiptMembers.Designer.cs">
       <DependentUpon>Frm_ReceiptMembers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_ReceiptOtherFees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_ReceiptOtherFees.Designer.cs">
+      <DependentUpon>Frm_ReceiptOtherFees.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_Votes.cs">
       <SubType>Form</SubType>
@@ -96,14 +132,29 @@
     <EmbeddedResource Include="FrmVoteMaterial.resx">
       <DependentUpon>FrmVoteMaterial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_LoanProcessing.resx">
+      <DependentUpon>Frm_LoanProcessing.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_LoanTypes.resx">
       <DependentUpon>Frm_LoanTypes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Members.resx">
       <DependentUpon>Frm_Members.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_NonLoanPaymentToMembers.resx">
+      <DependentUpon>Frm_NonLoanPaymentToMembers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_NonMembers.resx">
+      <DependentUpon>Frm_NonMembers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_OtherPayments.resx">
+      <DependentUpon>Frm_OtherPayments.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_ReceiptMembers.resx">
       <DependentUpon>Frm_ReceiptMembers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_ReceiptOtherFees.resx">
+      <DependentUpon>Frm_ReceiptOtherFees.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Votes.resx">
       <DependentUpon>Frm_Votes.cs</DependentUpon>
