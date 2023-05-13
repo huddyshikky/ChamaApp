@@ -10,5 +10,6 @@ namespace ChamaLibrary.Models
     {
         public int Id { get; set; }
         public string VoteName { get; set; }
+        public string VoteAbbrev { get; set; }
     }
 }

@@ -61,6 +61,12 @@
     <Compile Include="FrmVoteMaterial.Designer.cs">
       <DependentUpon>FrmVoteMaterial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_Banks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Banks.Designer.cs">
+      <DependentUpon>Frm_Banks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_LoanProcessing.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,11 +91,11 @@
     <Compile Include="Frm_NonLoanPaymentToMembers.Designer.cs">
       <DependentUpon>Frm_NonLoanPaymentToMembers.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm_NonMembers.cs">
+    <Compile Include="Frm_Accounts.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm_NonMembers.Designer.cs">
-      <DependentUpon>Frm_NonMembers.cs</DependentUpon>
+    <Compile Include="Frm_Accounts.Designer.cs">
+      <DependentUpon>Frm_Accounts.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_OtherPayments.cs">
       <SubType>Form</SubType>
@@ -108,6 +114,12 @@
     </Compile>
     <Compile Include="Frm_ReceiptOtherFees.Designer.cs">
       <DependentUpon>Frm_ReceiptOtherFees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_Users.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Users.Designer.cs">
+      <DependentUpon>Frm_Users.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_Votes.cs">
       <SubType>Form</SubType>
@@ -144,8 +156,8 @@
     <EmbeddedResource Include="Frm_NonLoanPaymentToMembers.resx">
       <DependentUpon>Frm_NonLoanPaymentToMembers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm_NonMembers.resx">
-      <DependentUpon>Frm_NonMembers.cs</DependentUpon>
+    <EmbeddedResource Include="Frm_Accounts.resx">
+      <DependentUpon>Frm_Accounts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_OtherPayments.resx">
       <DependentUpon>Frm_OtherPayments.cs</DependentUpon>

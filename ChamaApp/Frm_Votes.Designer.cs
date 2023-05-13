@@ -49,6 +49,8 @@
             this.VoteShowAllPanel = new System.Windows.Forms.Panel();
             this.btnAdd = new System.Windows.Forms.Button();
             this.dtgVotes = new System.Windows.Forms.DataGridView();
+            this.txtVoteAbbrev = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.MainGBox.SuspendLayout();
@@ -152,6 +154,8 @@
             this.VoteAddEditPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.VoteAddEditPanel.Controls.Add(this.txtVoteAbbrev);
+            this.VoteAddEditPanel.Controls.Add(this.label2);
             this.VoteAddEditPanel.Controls.Add(this.btnDelete);
             this.VoteAddEditPanel.Controls.Add(this.txtId);
             this.VoteAddEditPanel.Controls.Add(this.txtVoteName);
@@ -169,7 +173,7 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.LightGray;
-            this.btnDelete.Location = new System.Drawing.Point(190, 62);
+            this.btnDelete.Location = new System.Drawing.Point(188, 97);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(68, 26);
             this.btnDelete.TabIndex = 9;
@@ -202,7 +206,7 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.LightGray;
-            this.btnCancel.Location = new System.Drawing.Point(108, 62);
+            this.btnCancel.Location = new System.Drawing.Point(106, 97);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(68, 26);
             this.btnCancel.TabIndex = 6;
@@ -216,7 +220,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.LightGray;
-            this.btnSave.Location = new System.Drawing.Point(272, 62);
+            this.btnSave.Location = new System.Drawing.Point(270, 97);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(68, 26);
             this.btnSave.TabIndex = 5;
@@ -299,6 +303,26 @@
             this.dtgVotes.TabIndex = 2;
             this.dtgVotes.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtgVotes_RowHeaderMouseDoubleClick);
             // 
+            // txtVoteAbbrev
+            // 
+            this.txtVoteAbbrev.Font = new System.Drawing.Font("Roboto Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVoteAbbrev.Location = new System.Drawing.Point(108, 45);
+            this.txtVoteAbbrev.Name = "txtVoteAbbrev";
+            this.txtVoteAbbrev.Size = new System.Drawing.Size(233, 23);
+            this.txtVoteAbbrev.TabIndex = 11;
+            this.txtVoteAbbrev.WordWrap = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.LightGray;
+            this.label2.Location = new System.Drawing.Point(20, 45);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(90, 17);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Vote Abbrev :";
+            // 
             // Frm_Votes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -344,5 +368,7 @@
         private System.Windows.Forms.TextBox txtVoteName;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.TextBox txtVoteAbbrev;
+        private System.Windows.Forms.Label label2;
     }
 }

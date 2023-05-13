@@ -51,9 +51,9 @@ namespace ChamaApp
             Votes = SqliteDataAccess.GetALLVotes();
             if (Votes != null && Votes.Count > 0)
             {
-                cboItemName.DisplayMember = "VoteName";
-                cboItemName.ValueMember = "Id";
-                cboItemName.DataSource = Votes;
+                //cboItemName.DisplayMember = "VoteName";
+                //cboItemName.ValueMember = "Id";
+                //cboItemName.DataSource = Votes;
             }
         }
        
@@ -126,17 +126,17 @@ namespace ChamaApp
             dtpTransDate.Value = DateTime.Now;
             TxtTotalAmount.Text = "0.00";
             cboPayMode.SelectedIndex = 0;
-            cboItemName.SelectedIndex = 0;
-            TxtItemAmount.Text = "0.00";
-            lbl_AmountAllocated.Text = "0.00";
-            lbl_AmountRemaining.Text = "0.00";
-            if (dtgItems.Rows.Count > 0)
-            {
-                dtgItems.Rows.Clear();
-            }
-            AmountAllocated = 0;
-            AmountRemaining = 0;
-            AmountTotal = 0;
+            //cboItemName.SelectedIndex = 0;
+            //TxtItemAmount.Text = "0.00";
+            //lbl_AmountAllocated.Text = "0.00";
+            //lbl_AmountRemaining.Text = "0.00";
+            //if (dtgItems.Rows.Count > 0)
+            //{
+            //    dtgItems.Rows.Clear();
+            //}
+            //AmountAllocated = 0;
+            //AmountRemaining = 0;
+            //AmountTotal = 0;
 
         }
 
@@ -157,25 +157,25 @@ namespace ChamaApp
                 return;
             }
 
-            if (dtgItems.Rows.Count < 1)
-            {
-                MessageBox.Show("Please add the items.You cannot receipt without items", "@Chamaz", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                cboItemName.Focus();
-                return;
-            }
+            //if (dtgItems.Rows.Count < 1)
+            //{
+            //    MessageBox.Show("Please add the items.You cannot receipt without items", "@Chamaz", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    cboItemName.Focus();
+            //    return;
+            //}
 
-            if (decimal.Parse(lbl_AmountRemaining.Text.Trim()) < 0)
-            {
-                MessageBox.Show("Total Amount is less than the amount already allocated on items.Please Delete the allocated items first or enter a higher value", "@Chamaz", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                TxtTotalAmount.Focus();
-                return;
-            }
-            if (decimal.Parse(lbl_AmountRemaining.Text.Trim()) > 0)
-            {
-                MessageBox.Show("Total Amount is more than the amount already allocated on Items.Please allocate all the amount on Items", "@Chamaz", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                TxtTotalAmount.Focus();
-                return;
-            }
+            //if (decimal.Parse(lbl_AmountRemaining.Text.Trim()) < 0)
+            //{
+            //    MessageBox.Show("Total Amount is less than the amount already allocated on items.Please Delete the allocated items first or enter a higher value", "@Chamaz", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    TxtTotalAmount.Focus();
+            //    return;
+            //}
+            //if (decimal.Parse(lbl_AmountRemaining.Text.Trim()) > 0)
+            //{
+            //    MessageBox.Show("Total Amount is more than the amount already allocated on Items.Please allocate all the amount on Items", "@Chamaz", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    TxtTotalAmount.Focus();
+            //    return;
+            //}
 
             if (string.IsNullOrEmpty(cboPayMode.Text.Trim()))
             {
@@ -197,7 +197,7 @@ namespace ChamaApp
             };
 
             //Cashbook Details
-            FillAllocatedItems();
+            //FillAllocatedItems();
 
 
             if (EditMode) //update data

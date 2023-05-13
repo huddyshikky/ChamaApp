@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace ChamaApp
 {
-    public partial class Frm_NonMembers : Form
+    public partial class Frm_Accounts : Form
     {
         private bool EditMode = false;
 
@@ -24,7 +24,7 @@ namespace ChamaApp
             dtgMembers.Columns[0].Visible = false;
             dtgMembers.Columns[4].Visible = false;
         }
-        public Frm_NonMembers()
+        public Frm_Accounts()
         {
             InitializeComponent();
         }

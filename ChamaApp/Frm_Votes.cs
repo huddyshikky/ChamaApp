@@ -77,7 +77,8 @@ namespace ChamaApp
         private void ClearFields()
         {
             txtId.Text = "0";
-            txtVoteName.Text = "";     
+            txtVoteName.Text = "";
+            txtVoteAbbrev.Text = "";
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -90,7 +91,13 @@ namespace ChamaApp
                 txtVoteName.Focus();
                 return;
             }
-
+            if (string.IsNullOrEmpty(txtVoteAbbrev.Text.Trim()))
+            {
+                MessageBox.Show("Vote Abbreviation Cannot be Empty", "@Chamaz", MessageBoxButtons.OK);
+                txtVoteAbbrev.Focus();
+                return;
+            }
+            
             if (SqliteDataAccess.CheckIfVoteExist(txtVoteName.Text.Trim(), Convert.ToInt32(txtId.Text)))
             {
                 MessageBox.Show("VoteName is already available", "@Chamaz", MessageBoxButtons.OK);
@@ -105,6 +112,7 @@ namespace ChamaApp
             {
                 Id=Convert.ToInt32(txtId.Text),
                 VoteName = SqliteDataAccess.ToPropercase(txtVoteName.Text),
+                VoteAbbrev = SqliteDataAccess.ToPropercase(txtVoteAbbrev.Text),
             };
 
             if (EditMode) //update data
@@ -167,6 +175,7 @@ namespace ChamaApp
             DataGridViewRow dtgrow = dtgVotes.CurrentRow;
             txtId.Text = dtgrow.Cells[0].Value.ToString(); ;
             txtVoteName.Text = dtgrow.Cells[1].Value.ToString();
+            txtVoteAbbrev.Text = dtgrow.Cells[2].Value.ToString();
             ShowAddEditPanel(false);
         }
     }

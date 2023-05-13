@@ -66,10 +66,20 @@ namespace ChamaApp
             OpenChildForm(new Frm_Members());
             HideAllSubMenus();
         }
-        private void btnNonMembers_Click(object sender, EventArgs e)
+      
+        private void btnBanks_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Frm_NonMembers());
+            OpenChildForm(new Frm_Banks());
             HideAllSubMenus();
+        }
+        private void btnAccounts_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Frm_Accounts());
+            HideAllSubMenus();
+        }
+        private void btnUsers_Click(object sender, EventArgs e)
+        {
+
         }
         #endregion
 

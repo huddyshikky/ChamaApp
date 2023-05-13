@@ -1,6 +1,6 @@
 ﻿namespace ChamaApp
 {
-    partial class Frm_NonMembers
+    partial class Frm_Accounts
     {
         /// <summary>
         /// Required designer variable.

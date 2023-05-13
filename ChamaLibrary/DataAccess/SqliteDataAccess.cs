@@ -39,10 +39,8 @@ namespace ChamaLibrary.DataAccess
             }
             catch (Exception)
             {
-
-                throw;
-               
-
+                MessageBox.Show(" Error getting vote(s)", "Esent@ Accountant", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             } 
         }
         public static bool CheckIfVoteExist(string VoteName, int Id)
@@ -59,7 +57,7 @@ namespace ChamaLibrary.DataAccess
                 catch (Exception)
                 {
                     check = true;
-                    MessageBox.Show(" Error checking related student", "Esent@ Accountant", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(" Error checking related vote", "Esent@ Accountant", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             return check;
@@ -84,10 +82,9 @@ namespace ChamaLibrary.DataAccess
             }
             catch (Exception)
             {
-
-                throw;
-
-
+                MessageBox.Show(" Error checking related vote", "Esent@ Accountant", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+           
             }
         }
         public static VoteModel GetVoteById(int Id)
@@ -102,10 +99,8 @@ namespace ChamaLibrary.DataAccess
             }
             catch (Exception)
             {
-
-                throw;
-
-
+                MessageBox.Show(" Error getting vote by id", "Esent@ Accountant", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
             }
         }
         public static int InsertVote(VoteModel vote)
@@ -114,7 +109,7 @@ namespace ChamaLibrary.DataAccess
             {
                 using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
                 {
-                   var result= cnn.Execute("insert into votes(VoteName) values(@VoteName)", vote);
+                   var result= cnn.Execute("insert into votes(VoteName,VoteAbbrev) values(@VoteName,@VoteAbbrev)", vote);
                     return result;
                 }
             }
@@ -129,7 +124,7 @@ namespace ChamaLibrary.DataAccess
             {
                 using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
                 {
-                    var result = cnn.Execute("update votes set VoteName=@VoteName where Id=@Id", vote);
+                    var result = cnn.Execute("update votes set VoteName=@VoteName,VoteAbbrev=@VoteAbbrev where Id=@Id", vote);
                     return result;
                 }
             }
