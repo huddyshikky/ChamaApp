@@ -61,11 +61,23 @@
     <Compile Include="FrmVoteMaterial.Designer.cs">
       <DependentUpon>FrmVoteMaterial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_Accounts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Accounts.Designer.cs">
+      <DependentUpon>Frm_Accounts.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Banks.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frm_Banks.Designer.cs">
       <DependentUpon>Frm_Banks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_FinYear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_FinYear.Designer.cs">
+      <DependentUpon>Frm_FinYear.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_LoanProcessing.cs">
       <SubType>Form</SubType>
@@ -85,35 +97,17 @@
     <Compile Include="Frm_Members.Designer.cs">
       <DependentUpon>Frm_Members.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm_NonLoanPaymentToMembers.cs">
+    <Compile Include="Frm_Payment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm_NonLoanPaymentToMembers.Designer.cs">
-      <DependentUpon>Frm_NonLoanPaymentToMembers.cs</DependentUpon>
+    <Compile Include="Frm_Payment.Designer.cs">
+      <DependentUpon>Frm_Payment.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm_Accounts.cs">
+    <Compile Include="Frm_Receipt.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm_Accounts.Designer.cs">
-      <DependentUpon>Frm_Accounts.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm_OtherPayments.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_OtherPayments.Designer.cs">
-      <DependentUpon>Frm_OtherPayments.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm_ReceiptMembers.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_ReceiptMembers.Designer.cs">
-      <DependentUpon>Frm_ReceiptMembers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm_ReceiptOtherFees.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm_ReceiptOtherFees.Designer.cs">
-      <DependentUpon>Frm_ReceiptOtherFees.cs</DependentUpon>
+    <Compile Include="Frm_Receipt.Designer.cs">
+      <DependentUpon>Frm_Receipt.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_Users.cs">
       <SubType>Form</SubType>
@@ -144,6 +138,15 @@
     <EmbeddedResource Include="FrmVoteMaterial.resx">
       <DependentUpon>FrmVoteMaterial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Accounts.resx">
+      <DependentUpon>Frm_Accounts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Banks.resx">
+      <DependentUpon>Frm_Banks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_FinYear.resx">
+      <DependentUpon>Frm_FinYear.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_LoanProcessing.resx">
       <DependentUpon>Frm_LoanProcessing.cs</DependentUpon>
     </EmbeddedResource>
@@ -153,20 +156,11 @@
     <EmbeddedResource Include="Frm_Members.resx">
       <DependentUpon>Frm_Members.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm_NonLoanPaymentToMembers.resx">
-      <DependentUpon>Frm_NonLoanPaymentToMembers.cs</DependentUpon>
+    <EmbeddedResource Include="Frm_Payment.resx">
+      <DependentUpon>Frm_Payment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm_Accounts.resx">
-      <DependentUpon>Frm_Accounts.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Frm_OtherPayments.resx">
-      <DependentUpon>Frm_OtherPayments.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Frm_ReceiptMembers.resx">
-      <DependentUpon>Frm_ReceiptMembers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Frm_ReceiptOtherFees.resx">
-      <DependentUpon>Frm_ReceiptOtherFees.cs</DependentUpon>
+    <EmbeddedResource Include="Frm_Receipt.resx">
+      <DependentUpon>Frm_Receipt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Votes.resx">
       <DependentUpon>Frm_Votes.cs</DependentUpon>
@@ -184,6 +178,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Content Include="Db\ChamaDb.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

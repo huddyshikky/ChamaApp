@@ -6,30 +6,30 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ChamaApp
 {
-    public partial class Frm_Banks : Form
+    public partial class Frm_FinYear : Form
     {
         private bool EditMode = false;
 
-        private List<Bank> Banks = null;
-        private void LoadBanks()
+        private List<FinYear> FinYears = null;
+        private void LoadFinYears()
         {
-            Banks = SqliteDataAccess.GetALLBanks();
-            dtgBanks.DataSource = Banks;
-            dtgBanks.Columns[0].Visible = false;
+            FinYears = SqliteDataAccess.GetALLFinYears();
+            dtgFinYears.DataSource = FinYears;
+            dtgFinYears.Columns[0].Visible = false;
         }
-
-        public Frm_Banks()
+        public Frm_FinYear()
         {
             InitializeComponent();
         }
 
-        private void Frm_Banks_Load(object sender, EventArgs e)
+        private void Frm_FinYear_Load(object sender, EventArgs e)
         {
             ShowAllPanel();
         }
@@ -41,7 +41,7 @@ namespace ChamaApp
         }
         private void ShowAllPanel()
         {
-            LoadBanks();
+            LoadFinYears();
 
             BankAddEditPanel.Visible = false;
             BankShowAllPanel.Visible = true;
@@ -77,58 +77,62 @@ namespace ChamaApp
         private void ClearFields()
         {
             txtId.Text = "0";
-            txtBankName.Text = "";
+            txtYearName.Text = "";
+            dtpEndDate.Value = DateTime.Now;
+            dtpEndDate.Value = DateTime.Now;   
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             //validate textbox
 
-            if (string.IsNullOrEmpty(txtBankName.Text.Trim()))
+            if (string.IsNullOrEmpty(txtYearName.Text.Trim()))
             {
-                MessageBox.Show("BankName Cannot be Empty", "@Chamaz", MessageBoxButtons.OK);
-                txtBankName.Focus();
+                MessageBox.Show("FinYear Name Cannot be Empty", "@Chamaz", MessageBoxButtons.OK);
+                txtYearName.Focus();
                 return;
             }
 
-            if (SqliteDataAccess.CheckIfBankExist(txtBankName.Text.Trim(), Convert.ToInt32(txtId.Text)))
+            if (SqliteDataAccess.CheckIfFinYearExist(txtYearName.Text.Trim(), Convert.ToInt32(txtId.Text)))
             {
-                MessageBox.Show("BankName has already been registered", "@Chamaz", MessageBoxButtons.OK);
-                txtBankName.Focus();
+                MessageBox.Show("FinYear Name has already been registered", "@Chamaz", MessageBoxButtons.OK);
+                txtYearName.Focus();
                 return;
             }
 
             //check if votename exists
 
 
-            Bank Bank = new Bank()
+            FinYear FinYear = new FinYear()
             {
                 Id = Convert.ToInt32(txtId.Text),
-                BankName = SqliteDataAccess.ToPropercase(txtBankName.Text),
+                YearName = SqliteDataAccess.ToPropercase(txtYearName.Text),
+                StartDate =dtpStartDate.Value,
+                EndDate = dtpEndDate.Value,
             };
 
             if (EditMode) //update data
             {
-                if (SqliteDataAccess.UpdateBank(Bank) > 0)
+                if (SqliteDataAccess.UpdateFinYear(FinYear) > 0)
                 {
-                    MessageBox.Show($"Bank : {txtBankName.Text.Trim()} Updated", "@Chamaz", MessageBoxButtons.OK);
+                    MessageBox.Show($"FinYear : {txtYearName.Text.Trim()} Updated", "@Chamaz", MessageBoxButtons.OK);
 
                 }
                 else
                 {
-                    MessageBox.Show($"Failed to Update Bank : {txtBankName.Text.Trim()}", "@Chamaz", MessageBoxButtons.OK);
+                    MessageBox.Show($"Failed to Update FinYear : {txtYearName.Text.Trim()}", "@Chamaz", MessageBoxButtons.OK);
                 }
             }
             else //save new record
             {
-                if (SqliteDataAccess.InsertBank(Bank) > 0)
+                if (SqliteDataAccess.InsertFinYear(FinYear) > 0)
                 {
-                    MessageBox.Show($"Bank : {txtBankName.Text.Trim()} Added", "@Chamaz", MessageBoxButtons.OK);
+                    MessageBox.Show($"FinYear : {txtYearName.Text.Trim()} Added", "@Chamaz", MessageBoxButtons.OK);
 
                 }
                 else
                 {
-                    MessageBox.Show($"Failed to Add Bank : {txtBankName.Text.Trim()}", "@Chamaz", MessageBoxButtons.OK);
+                    MessageBox.Show($"Failed to Add FinYear : {txtYearName.Text.Trim()}", "@Chamaz", MessageBoxButtons.OK);
                 }
             }
 
@@ -142,32 +146,31 @@ namespace ChamaApp
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show($"Are you sure to detete Bank :  {txtBankName.Text.Trim()}", "@Chamaz", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show($"Are you sure to detete FinYear :  {txtYearName.Text.Trim()}", "@Chamaz", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 if (SqliteDataAccess.CheckIfBankIsReferenced(Convert.ToInt32(txtId.Text.Trim())))
                 {
-                    MessageBox.Show($"Bank cannot be Deleted because it is used by other entities", "@Chamaz", MessageBoxButtons.OK);
+                    MessageBox.Show($"FinYear cannot be Deleted because it is used by other entities", "@Chamaz", MessageBoxButtons.OK);
 
                     return;
                 }
-                if (SqliteDataAccess.DeleteBank(Convert.ToInt32(txtId.Text.Trim())) > 0)
+                if (SqliteDataAccess.DeleteFinYear(Convert.ToInt32(txtId.Text.Trim())) > 0)
                 {
-                    MessageBox.Show($"Bank : {txtBankName.Text.Trim()} Deleted", "@Chamaz", MessageBoxButtons.OK);
+                    MessageBox.Show($"FinYear : {txtYearName.Text.Trim()} Deleted", "@Chamaz", MessageBoxButtons.OK);
                 }
                 else
                 {
-                    MessageBox.Show($"Failed to Delete Bank : {txtBankName.Text.Trim()}", "@Chamaz", MessageBoxButtons.OK);
+                    MessageBox.Show($"Failed to Delete FinYear : {txtYearName.Text.Trim()}", "@Chamaz", MessageBoxButtons.OK);
                 }
             }
             ShowAllPanel();
         }
 
-
         private void dtgBanks_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            DataGridViewRow dtgrow = dtgBanks.CurrentRow;
+            DataGridViewRow dtgrow = dtgFinYears.CurrentRow;
             txtId.Text = dtgrow.Cells[0].Value.ToString(); ;
-            txtBankName.Text = dtgrow.Cells[1].Value.ToString();
+            txtYearName.Text = dtgrow.Cells[1].Value.ToString();
             ShowAddEditPanel(false);
         }
     }

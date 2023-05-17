@@ -1,5 +1,6 @@
 ﻿using ChamaLibrary.DataAccess;
 using ChamaLibrary.Models;
+using ChamaLibrary.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,21 +17,41 @@ namespace ChamaApp
     {
         private bool EditMode = false;
 
-        private List<MemberModel> Members = null;
-        private void LoadMembers()
+        private List<Account> Accounts = null;
+        private List<AccountVM> AccountsView = null;
+        private void LoadAccounts()
         {
-            Members = SqliteDataAccess.GetALLNonMembers();
-            dtgMembers.DataSource = Members;
-            dtgMembers.Columns[0].Visible = false;
-            dtgMembers.Columns[4].Visible = false;
+            AccountsView = SqliteDataAccess.GetALLAccounts();
+            if (AccountsView.Count>0)
+            {
+                dtgAccounts.DataSource = AccountsView;
+                dtgAccounts.Columns[0].Visible = false;
+                dtgAccounts.Columns[2].Visible = false;
+                dtgAccounts.Columns[3].HeaderText = "Bank";
+                dtgAccounts.Columns[3].Width = 60;
+
+            }
+           
+        }
+        private void LoadBanks()
+        {
+            List<Bank> Banks = new List<Bank>();
+            Banks = SqliteDataAccess.GetALLBanks();
+            if (Banks != null && Banks.Count > 0)
+            {
+                cboBank.DisplayMember = "BankName";
+                cboBank.ValueMember = "Id";
+                cboBank.DataSource = Banks;
+            }
         }
         public Frm_Accounts()
         {
             InitializeComponent();
         }
 
-        private void Frm_NonMembers_Load(object sender, EventArgs e)
+        private void Frm_Accounts_Load(object sender, EventArgs e)
         {
+            LoadBanks();
             ShowAllPanel();
         }
 
@@ -41,12 +62,12 @@ namespace ChamaApp
         }
         private void ShowAllPanel()
         {
-            LoadMembers();
+            LoadAccounts();
 
-            MemberAddEditPanel.Visible = false;
-            MemberShowAllPanel.Visible = true;
-            MemberShowAllPanel.Left = (MainGBox.Width - MemberShowAllPanel.Width) / 2;
-            MemberShowAllPanel.Top = (MainGBox.Height - MemberShowAllPanel.Height) / 2;
+            BankAddEditPanel.Visible = false;
+            BankShowAllPanel.Visible = true;
+            BankShowAllPanel.Left = (MainGBox.Width - BankShowAllPanel.Width) / 2;
+            BankShowAllPanel.Top = (MainGBox.Height - BankShowAllPanel.Height) / 2;
         }
         private void ShowAddEditPanel(bool Add)
         {
@@ -63,10 +84,10 @@ namespace ChamaApp
                 EditMode = true;
             }
 
-            MemberShowAllPanel.Visible = false;
-            MemberAddEditPanel.Visible = true;
-            MemberAddEditPanel.Left = (MainGBox.Width - MemberAddEditPanel.Width) / 2;
-            MemberAddEditPanel.Top = (MainGBox.Height - MemberAddEditPanel.Height) / 2;
+            BankShowAllPanel.Visible = false;
+            BankAddEditPanel.Visible = true;
+            BankAddEditPanel.Left = (MainGBox.Width - BankAddEditPanel.Width) / 2;
+            BankAddEditPanel.Top = (MainGBox.Height - BankAddEditPanel.Height) / 2;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -77,81 +98,83 @@ namespace ChamaApp
         private void ClearFields()
         {
             txtId.Text = "0";
-            txtIdNumber.Text = "";
-            txtMemberName.Text = "";
-            chkActive.Checked = true;
+            txtAccountName.Text = "";
+            if(cboBank.Items.Count>0) { cboBank.SelectedIndex = 1; }
+            txtBranch.Text = "";
+            txtAccountNo.Text = "";
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             //validate textbox
 
-            if (string.IsNullOrEmpty(txtIdNumber.Text.Trim()))
+            if (string.IsNullOrEmpty(txtAccountName.Text.Trim()))
             {
-                MessageBox.Show("Number Cannot be Empty", "@Chamaz", MessageBoxButtons.OK);
-                txtIdNumber.Focus();
-                return;
-            }
-            if (!Int64.TryParse(txtIdNumber.Text.Trim(), out Int64 _))
-            {
-                MessageBox.Show("Number should be Numeric", "@Chamaz", MessageBoxButtons.OK);
-                txtIdNumber.Focus();
-                return;
-            }
-            if (SqliteDataAccess.CheckIfNonMemberIdNumberExist(Int64.Parse(txtIdNumber.Text.Trim()), int.Parse(txtId.Text.Trim())))
-            {
-                MessageBox.Show("Number is already in use", "@Chamaz", MessageBoxButtons.OK);
-                txtIdNumber.Focus();
-                return;
-            }
-            if (string.IsNullOrEmpty(txtMemberName.Text.Trim()))
-            {
-                MessageBox.Show("Non Member Name Cannot be Empty", "@Chamaz", MessageBoxButtons.OK);
-                txtMemberName.Focus();
+                MessageBox.Show("AccountName Cannot be Empty", "@Chamaz", MessageBoxButtons.OK);
+                txtAccountName.Focus();
                 return;
             }
 
-            if (SqliteDataAccess.CheckIfNonMemberExist(txtMemberName.Text.Trim(), int.Parse(txtId.Text.Trim())))
+            //if (SqliteDataAccess.CheckIfAExist(txtAccountName.Text.Trim(), Convert.ToInt32(txtId.Text)))
+            //{
+            //    MessageBox.Show("AccountName is already available", "@Chamaz", MessageBoxButtons.OK);
+            //    txtAccountName.Focus();
+            //    return;
+            //}
+            if (string.IsNullOrEmpty(cboBank.Text.Trim()))
             {
-                MessageBox.Show("Non Member Name is already in use", "@Chamaz", MessageBoxButtons.OK);
-                txtMemberName.Focus();
+                MessageBox.Show("Account Name Cannot be Empty", "@Chamaz", MessageBoxButtons.OK);
+                cboBank.Focus();
                 return;
             }
-
-
-
-            MemberModel Member = new MemberModel()
+            if (string.IsNullOrEmpty(txtBranch.Text.Trim()))
             {
-                Id = Convert.ToInt32(txtId.Text.Trim()),
-                IdentityNo = Convert.ToInt64(txtIdNumber.Text.Trim()),
-                MemberName = SqliteDataAccess.ToPropercase(txtMemberName.Text.Trim()),
-                IsActive = ((int)chkActive.CheckState),
-                IsMember = 0
+                MessageBox.Show("Account Branch Cannot be Empty", "@Chamaz", MessageBoxButtons.OK);
+                txtBranch.Focus();
+                return;
+            }
+            if (string.IsNullOrEmpty(txtAccountNo.Text.Trim()))
+            {
+                MessageBox.Show("Account Number Cannot be Empty", "@Chamaz", MessageBoxButtons.OK);
+                txtAccountNo.Focus();
+                return;
+            }
+           
+
+
+
+            AccountVM Account = new AccountVM()
+            {
+                Id = Convert.ToInt32(txtId.Text),
+                AccountName = SqliteDataAccess.ToPropercase(txtAccountName.Text),
+                BankId = (int)cboBank.SelectedValue,
+                Branch = SqliteDataAccess.ToPropercase(txtBranch.Text),
+                AccountNumber = SqliteDataAccess.ToPropercase(txtAccountNo.Text),
             };
 
             if (EditMode) //update data
             {
-                if (SqliteDataAccess.UpdateNonMember(Member) > 0)
+                if (SqliteDataAccess.UpdateAccount(Account) > 0)
                 {
-                    MessageBox.Show($" {txtMemberName.Text.Trim()} Details Updated", "@Chamaz", MessageBoxButtons.OK);
+                    MessageBox.Show($"Account : {txtAccountName.Text.Trim()} Updated", "@Chamaz", MessageBoxButtons.OK);
 
                 }
                 else
                 {
-                    MessageBox.Show($"Failed to Update : {txtMemberName.Text.Trim()} Details", "@Chamaz", MessageBoxButtons.OK);
+                    MessageBox.Show($"Failed to Update Account : {txtAccountName.Text.Trim()}", "@Chamaz", MessageBoxButtons.OK);
                 }
             }
             else //save new record
             {
-
-                if (SqliteDataAccess.InsertNonMember(Member) > 0)
+                if (SqliteDataAccess.InsertAccount(Account) > 0)
                 {
-                    MessageBox.Show($" {txtMemberName.Text.Trim()} Added", "@Chamaz", MessageBoxButtons.OK);
+                    MessageBox.Show($"Account : {txtAccountName.Text.Trim()} Added", "@Chamaz", MessageBoxButtons.OK);
 
                 }
                 else
                 {
-                    MessageBox.Show($"Failed to Add : {txtMemberName.Text.Trim()}", "@Chamaz", MessageBoxButtons.OK);
+                    MessageBox.Show($"Failed to Add Account : {txtAccountName.Text.Trim()}", "@Chamaz", MessageBoxButtons.OK);
                 }
             }
 
@@ -163,32 +186,32 @@ namespace ChamaApp
             this.Close();
         }
 
-        private void dtgMembers_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            DataGridViewRow dtgrow = dtgMembers.CurrentRow;
-            txtId.Text = dtgrow.Cells[0].Value.ToString();
-            txtIdNumber.Text = dtgrow.Cells[1].Value.ToString();
-            txtMemberName.Text = dtgrow.Cells[2].Value.ToString();
-            Int64 val = Int64.Parse(dtgrow.Cells[3].Value.ToString());
-            ShowAddEditPanel(false);
-
-        }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show($"Are you sure to detete Non Member :  {txtMemberName.Text.Trim()}", "@Chamaz", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show($"Are you sure to detete Account :  {txtAccountName.Text.Trim()}", "@Chamaz", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
 
-                if (SqliteDataAccess.DeleteNonMember(Convert.ToInt32(txtId.Text.Trim())) > 0)
+                if (SqliteDataAccess.DeleteAccount(Convert.ToInt32(txtId.Text.Trim())) > 0)
                 {
-                    MessageBox.Show($"Non Member : {txtMemberName.Text.Trim()} Deleted", "@Chamaz", MessageBoxButtons.OK);
+                    MessageBox.Show($"Account : {txtAccountName.Text.Trim()} Deleted", "@Chamaz", MessageBoxButtons.OK);
                 }
                 else
                 {
-                    MessageBox.Show($"Failed to Delete Non Member : {txtMemberName.Text.Trim()}", "@Chamaz", MessageBoxButtons.OK);
+                    MessageBox.Show($"Failed to Delete Account : {txtAccountName.Text.Trim()}", "@Chamaz", MessageBoxButtons.OK);
                 }
             }
             ShowAllPanel();
+        }
+
+        private void dtgAccounts_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridViewRow dtgrow = dtgAccounts.CurrentRow;
+            txtId.Text = dtgrow.Cells[0].Value.ToString();
+            txtAccountName.Text = dtgrow.Cells[1].Value.ToString();
+            cboBank.SelectedValue = (int)dtgrow.Cells[2].Value;
+            txtBranch.Text = dtgrow.Cells[4].Value.ToString();
+            txtAccountNo.Text = dtgrow.Cells[5].Value.ToString();
+            ShowAddEditPanel(false);
         }
     }
 }

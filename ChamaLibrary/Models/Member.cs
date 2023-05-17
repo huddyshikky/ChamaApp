@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ChamaLibrary.Models
 {
-    public class MemberModel
+    public class Member
     {
         public int Id { get; set; } 
-        public Int64 IdentityNo { get; set; }    
+        public string IdentityNo { get; set; }    
         public string MemberName { get; set; }
         public int IsActive { get; set; }= 1;
         public int IsMember { get; set; } = 1;

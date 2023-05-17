@@ -1,5 +1,6 @@
 ﻿using ChamaLibrary.DataAccess;
 using ChamaLibrary.Models;
+using ChamaLibrary.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,18 +13,18 @@ using System.Windows.Forms;
 
 namespace ChamaApp
 {
-    public partial class Frm_ReceiptOtherFees : Form
+    public partial class Frm_Payment : Form
     {
         private bool EditMode = false;
         decimal AmountAllocated = 0;
         decimal AmountRemaining = 0;
         decimal AmountTotal = 0;
 
-        List<CashBookDetailsModel> CashBookDetails = new List<CashBookDetailsModel>();
-        List<CashBookDetailsViewModel> CashBookDetailsView = new List<CashBookDetailsViewModel>();
+        List<CashBookVote> CashBookDetails = new List<CashBookVote>();
+        List<CashBookVoteVM> CashBookDetailsView = new List<CashBookVoteVM>();
 
-        CashBookModel CashBook = new CashBookModel();
-        List<CashBookModel> CashBookList = new List<CashBookModel>();
+        CashBook CashBook = new CashBook();
+        List<CashBook> CashBookList = new List<CashBook>();
 
         private void ShowAllPanel()
         {
@@ -32,12 +33,12 @@ namespace ChamaApp
             MemberCreditAddEditPanel.Visible = false;
             MemberCreditShowAllPanel.Visible = true;
             MemberCreditShowAllPanel.Left = (MainGBox.Width - MemberCreditShowAllPanel.Width) / 2;
-            MemberCreditShowAllPanel.Top =(MainGBox.Height - MemberCreditShowAllPanel.Height) / 2;
+            MemberCreditShowAllPanel.Top = (MainGBox.Height - MemberCreditShowAllPanel.Height) / 2;
         }
         private void LoadMembers()
         {
-            List<MemberModel> Members = new List<MemberModel>();
-            Members = SqliteDataAccess.GetALLNonMembers();
+            List<Member> Members = new List<Member>();
+            Members = SqliteDataAccess.GetALLMembers();
             if (Members != null && Members.Count > 0)
             {
                 cboMemberName.DisplayMember = "MemberName";
@@ -47,7 +48,7 @@ namespace ChamaApp
         }
         private void LoadVotes()
         {
-            List<VoteModel> Votes = new List<VoteModel>();
+            List<Vote> Votes = new List<Vote>();
             Votes = SqliteDataAccess.GetALLVotes();
             if (Votes != null && Votes.Count > 0)
             {
@@ -56,12 +57,12 @@ namespace ChamaApp
                 cboItemName.DataSource = Votes;
             }
         }
-        public Frm_ReceiptOtherFees()
+        public Frm_Payment()
         {
             InitializeComponent();
         }
 
-        private void Frm_ReceiptOtherFees_Load(object sender, EventArgs e)
+        private void Frm_NonLoanPaymentToMembers_Load(object sender, EventArgs e)
         {
             ShowAllPanel();
             LoadVotes();
@@ -71,24 +72,25 @@ namespace ChamaApp
         {
             this.Close();
         }
+
         private void cboMemberName_SelectedIndexChanged(object sender, EventArgs e)
         {
             lblMemberName.Text = cboMemberName.Text;
-            MemberModel selectedMember = (MemberModel)cboMemberName.SelectedItem;
+            Member selectedMember = (Member)cboMemberName.SelectedItem;
             txtMemberId.Text = selectedMember.Id.ToString();
-            //get receipts for the selected member
-            LoadMemberReceipts(Convert.ToInt32(cboMemberName.SelectedValue.ToString()));
+            //get Payments for the selected member
+            LoadMemberPayments(Convert.ToInt32(cboMemberName.SelectedValue.ToString()));
 
         }
-        private void LoadMemberReceipts(int Member_Id)
+        private void LoadMemberPayments(int Member_Id)
         {
-            CashBookList = SqliteDataAccess.GetCashBookByMemberId(Member_Id,"Credit");
-            dtgOtherReceipts.DataSource = CashBookList;
-            dtgOtherReceipts.Columns[0].Visible = false;
-            dtgOtherReceipts.Columns[1].Visible = false;
-            dtgOtherReceipts.Columns[2].Visible = false;
-            dtgOtherReceipts.Columns[5].Visible = false;
-            dtgOtherReceipts.Columns[6].Visible = false;
+            //CashBookList = SqliteDataAccess.GetCashBookByMemberId(Member_Id,"Debit");
+            //dtgMemberPayments.DataSource = CashBookList;
+            dtgMemberPayments.Columns[0].Visible = false;
+            dtgMemberPayments.Columns[1].Visible = false;
+            dtgMemberPayments.Columns[2].Visible = false;
+            dtgMemberPayments.Columns[5].Visible = false;
+            dtgMemberPayments.Columns[6].Visible = false;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -131,9 +133,8 @@ namespace ChamaApp
                 dtgItems.Rows.Clear();
             }
             AmountAllocated = 0;
-             AmountRemaining = 0;
-             AmountTotal = 0;
-
+            AmountRemaining = 0;
+            AmountTotal = 0;
 
         }
 
@@ -183,6 +184,7 @@ namespace ChamaApp
 
         private void TxtTotalAmount_Leave(object sender, EventArgs e)
         {
+
             if (!decimal.TryParse(TxtTotalAmount.Text.Trim(), out _))
             {
                 MessageBox.Show("Total Amount should be numeric", "@Chamaz", MessageBoxButtons.OK);
@@ -260,7 +262,7 @@ namespace ChamaApp
 
             if (dtgItems.Rows.Count < 1)
             {
-                MessageBox.Show("Please add the items.You cannot receipt without items", "@Chamaz", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please add the items.You cannot make payment without items", "@Chamaz", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cboItemName.Focus();
                 return;
             }
@@ -285,15 +287,15 @@ namespace ChamaApp
                 return;
             }
 
-            CashBook = new CashBookModel()
+            CashBook = new CashBook()
             {
                 Id = Convert.ToInt32(txtCsbkId.Text.Trim()),
-                Member_Id = Convert.ToInt32(txtMemberId.Text.Trim()),
-                Name = SqliteDataAccess.ToPropercase(cboMemberName.Text.Trim()),
-                Trans_Date = dtpTransDate.Value.ToString("yyyy-MM-dd"),
-                Paymode = cboPayMode.Text.Trim(),
-                TransType = "Credit",
-                TransCategory = "NonMemberDeposits",
+                //Member_Id = Convert.ToInt32(txtMemberId.Text.Trim()),
+                //Name = SqliteDataAccess.ToPropercase(cboMemberName.Text.Trim()),
+                //Trans_Date = dtpTransDate.Value.ToString("yyyy-MM-dd"),
+                //Paymode = cboPayMode.Text.Trim(),
+                //TransType = "Debit",
+                //TransCategory = "MemberPayments",
                 Amount = decimal.Parse(TxtTotalAmount.Text.Trim()),
             };
 
@@ -303,27 +305,27 @@ namespace ChamaApp
 
             if (EditMode) //update data
             {
-                if (SqliteDataAccess.UpdateCashBook(CashBook, CashBookDetails) > 0)
-                {
-                    MessageBox.Show($"Receipt Details for {lblMemberName.Text.Trim()} Updated", "@Chamaz", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    MessageBox.Show($"Failed to Update Receipt Details for {lblMemberName.Text.Trim()}", "@Chamaz", MessageBoxButtons.OK);
-                }
+                //if (SqliteDataAccess.UpdateCashBook(CashBook, CashBookDetails) > 0)
+                //{
+                //    MessageBox.Show($"Payment To Member : {lblMemberName.Text.Trim()} Updated", "@Chamaz", MessageBoxButtons.OK);
+                //}
+                //else
+                //{
+                //    MessageBox.Show($"Failed to Update Payment Details for Member : {lblMemberName.Text.Trim()}", "@Chamaz", MessageBoxButtons.OK);
+                //}
             }
             else //save new record
             {
 
-                if (SqliteDataAccess.InsertCashBook(CashBook, CashBookDetails) > 0)
-                {
-                    MessageBox.Show($"Receipt Details for {lblMemberName.Text.Trim()} Created", "@Chamaz", MessageBoxButtons.OK);
+                //if (SqliteDataAccess.InsertCashBook(CashBook, CashBookDetails) > 0)
+                //{
+                //    MessageBox.Show($"Payment to Member : {lblMemberName.Text.Trim()} Created", "@Chamaz", MessageBoxButtons.OK);
 
-                }
-                else
-                {
-                    MessageBox.Show($"Failed to create receipt for Member : {lblMemberName.Text.Trim()}", "@Chamaz", MessageBoxButtons.OK);
-                }
+                //}
+                //else
+                //{
+                //    MessageBox.Show($"Failed to create Payment for Member : {lblMemberName.Text.Trim()}", "@Chamaz", MessageBoxButtons.OK);
+                //}
             }
             btnCancel_Click(sender, e);
         }
@@ -332,19 +334,19 @@ namespace ChamaApp
         {
             foreach (DataGridViewRow row in dtgItems.Rows)
             {
-                CashBookDetails.Add(new CashBookDetailsModel
+                CashBookDetails.Add(new CashBookVote
                 {
                     //Id
-                    Csbk_Id = Convert.ToInt32(txtCsbkId.Text.Trim()),
-                    Vote_Id = Convert.ToInt32(row.Cells[0].Value.ToString().Trim()),
-                    Amount = Convert.ToInt32(row.Cells[2].Value.ToString().Trim()),
+                    VoteId = Convert.ToInt32(row.Cells[0].Value.ToString().Trim()),
+                    VoteAmount = Convert.ToInt32(row.Cells[2].Value.ToString().Trim()),
+                    CashBookId = Convert.ToInt32(txtCsbkId.Text.Trim()),
                 });
             }
         }
 
-        private void dtgOtherReceipts_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void dtgMemberPayments_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            DataGridViewRow dtgrow = dtgOtherReceipts.CurrentRow;
+            DataGridViewRow dtgrow = dtgMemberPayments.CurrentRow;
             txtCsbkId.Text = dtgrow.Cells[0].Value.ToString();
             dtpTransDate.Value = Convert.ToDateTime(dtgrow.Cells[3].Value.ToString());
             cboPayMode.Text = dtgrow.Cells[4].Value.ToString();
@@ -357,14 +359,14 @@ namespace ChamaApp
         {
 
             AmountTotal = 0;
-            CashBookDetailsView = SqliteDataAccess.CashBookDetailsByCsbkId(Csbk_Id);
+            CashBookDetailsView = SqliteDataAccess.CashBookVotesByCsbkId(Csbk_Id);
             if (CashBookDetailsView != null && CashBookDetailsView.Count > 0)
             {
                 foreach (var Drow in CashBookDetailsView)
                 {
-                    string[] rodata = { Drow.Id.ToString(), Drow.VoteName, Drow.Amount.ToString() };
+                    string[] rodata = { Drow.Id.ToString(), Drow.VoteName, Drow.VoteAmount.ToString() };
                     dtgItems.Rows.Add(rodata);
-                    AmountTotal += decimal.Parse(Drow.Amount.ToString());
+                    AmountTotal += decimal.Parse(Drow.VoteAmount.ToString());
                 }
                 AmountAllocated = AmountTotal;
                 AmountRemaining = 0;
@@ -376,22 +378,21 @@ namespace ChamaApp
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show($"Are you sure to detete the selected receipt for Member :  {lblMemberName.Text.Trim()}", "@Chamaz", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show($"Are you sure to delete the selected Payment to Member :  {lblMemberName.Text.Trim()}", "@Chamaz", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
 
-                if (SqliteDataAccess.DeleteCashBook(Convert.ToInt32(txtCsbkId.Text.Trim())) > 0)
-                {
-                    MessageBox.Show($"Receipt Details Deleted", "@Chamaz", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    MessageBox.Show($"Failed to Delete Receipt", "@Chamaz", MessageBoxButtons.OK);
-                }
+                //if (SqliteDataAccess.DeleteCashBook(Convert.ToInt32(txtCsbkId.Text.Trim())) > 0)
+                //{
+                //    MessageBox.Show($"Payment Details Deleted", "@Chamaz", MessageBoxButtons.OK);
+                //}
+                //else
+                //{
+                //    MessageBox.Show($"Failed to Delete Payment", "@Chamaz", MessageBoxButtons.OK);
+                //}
             }
             ShowAllPanel();
         }
 
-       
+        
     }
-    
 }

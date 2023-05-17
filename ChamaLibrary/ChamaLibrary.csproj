@@ -73,18 +73,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\SqliteDataAccess.cs" />
-    <Compile Include="Models\CashBookDetailsViewModel.cs" />
-    <Compile Include="Models\CashBookDetailsModel.cs" />
-    <Compile Include="Models\CashBookModel.cs" />
-    <Compile Include="Models\LoanTypeModel.cs" />
-    <Compile Include="Models\MemberModel.cs" />
-    <Compile Include="Models\PayModeEnum.cs" />
-    <Compile Include="Models\TransCategoryEnum.cs" />
-    <Compile Include="Models\TransTypeEnum.cs" />
-    <Compile Include="Models\VoteModel.cs" />
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\Bank.cs" />
+    <Compile Include="Models\CashBookVote.cs" />
+    <Compile Include="Models\CashBook.cs" />
+    <Compile Include="Models\FineWithdrawal.cs" />
+    <Compile Include="Models\FinYear.cs" />
+    <Compile Include="Models\Loan.cs" />
+    <Compile Include="Models\LoanTransaction.cs" />
+    <Compile Include="Models\LoanType.cs" />
+    <Compile Include="Models\Member.cs" />
+    <Compile Include="Models\Payment.cs" />
+    <Compile Include="Enums\PayModeEnum.cs" />
+    <Compile Include="Models\Receipt.cs" />
+    <Compile Include="Enums\TransCategoryEnum.cs" />
+    <Compile Include="Enums\TransTypeEnum.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Vote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\GenericRepository.cs" />
     <Compile Include="Repository\IGenericRepository.cs" />
+    <Compile Include="ViewModel\AccountVM.cs" />
+    <Compile Include="ViewModel\CashBookVoteVM.cs" />
+    <Compile Include="ViewModel\ReceiptVM.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -38,12 +38,13 @@
             // materialTextBox1
             // 
             this.materialTextBox1.AnimateReadOnly = false;
+            this.materialTextBox1.BackColor = System.Drawing.Color.White;
             this.materialTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.materialTextBox1.Depth = 0;
-            this.materialTextBox1.Font = new System.Drawing.Font("Roboto", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.materialTextBox1.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.materialTextBox1.Hint = "Enter Vote";
             this.materialTextBox1.LeadingIcon = null;
-            this.materialTextBox1.Location = new System.Drawing.Point(121, 92);
+            this.materialTextBox1.Location = new System.Drawing.Point(137, 85);
             this.materialTextBox1.MaxLength = 50;
             this.materialTextBox1.MouseState = MaterialSkin.MouseState.OUT;
             this.materialTextBox1.Multiline = false;
@@ -136,7 +137,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(816, 489);
             this.Controls.Add(this.materialButton1);
             this.Controls.Add(this.materialFloatingActionButton1);
             this.Controls.Add(this.Switch);
@@ -144,7 +145,7 @@
             this.Controls.Add(this.materialTextBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FrmVoteMaterial";
-            this.Text = "FrmVoteMaterial";
+            this.Text = "Votes";
             this.Load += new System.EventHandler(this.FrmVoteMaterial_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

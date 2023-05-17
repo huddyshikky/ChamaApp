@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ChamaLibrary.Models
 {
-    public class LoanTypeModel
+    public class LoanType
     {
         public int Id { get; set; }
-        public string LoanType { get; set; }
+        public string LoanTypeName { get; set; }
     }
 }

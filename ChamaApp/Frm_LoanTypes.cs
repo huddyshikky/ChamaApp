@@ -16,7 +16,7 @@ namespace ChamaApp
     {
         private bool EditMode = false;
 
-        private List<LoanTypeModel> LoanTypes = null;
+        private List<LoanType> LoanTypes = null;
         private void LoadLoanTypes()
         {
             LoanTypes = SqliteDataAccess.GetALLLoanTypes();
@@ -100,10 +100,10 @@ namespace ChamaApp
             //check if votename exists
 
 
-            LoanTypeModel LoanType = new LoanTypeModel()
+            LoanType LoanType = new LoanType()
             {
                 Id = Convert.ToInt32(txtId.Text),
-                LoanType = SqliteDataAccess.ToPropercase(txtLoanType.Text),
+                LoanTypeName = SqliteDataAccess.ToPropercase(txtLoanType.Text),
             };
 
             if (EditMode) //update data

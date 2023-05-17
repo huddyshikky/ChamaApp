@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ChamaLibrary.Models
 {
-    public class CashBookDetailsModel
+    public class FinYear
     {
         public int Id { get; set; }
-        public int Csbk_Id { get; set; }
-        public int Vote_Id { get; set; }
-        public decimal Amount { get; set; }
+        public string YearName { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
     }
 }

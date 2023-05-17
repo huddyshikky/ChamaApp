@@ -66,7 +66,6 @@ namespace ChamaApp
             OpenChildForm(new Frm_Members());
             HideAllSubMenus();
         }
-      
         private void btnBanks_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Frm_Banks());
@@ -77,9 +76,10 @@ namespace ChamaApp
             OpenChildForm(new Frm_Accounts());
             HideAllSubMenus();
         }
-        private void btnUsers_Click(object sender, EventArgs e)
+        private void btnFinYear_Click(object sender, EventArgs e)
         {
-
+            OpenChildForm(new Frm_FinYear());
+            HideAllSubMenus();
         }
         #endregion
 
@@ -90,24 +90,12 @@ namespace ChamaApp
         #region TransactionSubMenu
         private void btnReceiptMembers_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Frm_ReceiptMembers());
+            OpenChildForm(new Frm_Receipt());
             HideAllSubMenus();
         }
-
-        private void btnReceiptOthers_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new Frm_ReceiptOtherFees());
-            HideAllSubMenus();
-        }
-
         private void btnPayments_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new Frm_NonLoanPaymentToMembers());
-            HideAllSubMenus();
-        }
-        private void btnOtherPayments_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new Frm_OtherPayments());
+            OpenChildForm(new Frm_Payment());
             HideAllSubMenus();
         }
         #endregion
@@ -139,7 +127,12 @@ namespace ChamaApp
         {
             HideAllSubMenus();
         }
-
+        private void btnUsers_Click(object sender, EventArgs e)
+        {
+            //OpenChildForm(new Frm_Users());
+            OpenChildForm(new FrmVoteMaterial());
+            HideAllSubMenus();
+        }
         private void btnAssignRoles_Click(object sender, EventArgs e)
         {
             HideAllSubMenus();
@@ -182,6 +175,6 @@ namespace ChamaApp
             btnRegistration.ForeColor = Color.Gainsboro;
         }
 
-        
+       
     }
 }

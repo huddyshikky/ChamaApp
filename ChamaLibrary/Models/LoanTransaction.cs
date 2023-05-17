@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ChamaLibrary.Models
 {
-    public class VoteModel
+    public class LoanTransaction
     {
         public int Id { get; set; }
-        public string VoteName { get; set; }
-        public string VoteAbbrev { get; set; }
+        public int LoanId { get; set; }
+        public int CashBookId { get; set; }
     }
 }

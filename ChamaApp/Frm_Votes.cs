@@ -17,7 +17,7 @@ namespace ChamaApp
     {
         private bool EditMode = false;
 
-        private List<VoteModel> votes=null;
+        private List<Vote> votes=null;
         private void LoadVotes()
         {
             votes= SqliteDataAccess.GetALLVotes();
@@ -108,7 +108,7 @@ namespace ChamaApp
             //check if votename exists
 
 
-            VoteModel vote = new VoteModel()
+            Vote vote = new Vote()
             {
                 Id=Convert.ToInt32(txtId.Text),
                 VoteName = SqliteDataAccess.ToPropercase(txtVoteName.Text),

@@ -17,7 +17,7 @@ namespace ChamaApp
     {
         private bool EditMode = false;
 
-        private List<MemberModel> Members = null;
+        private List<Member> Members = null;
         private void LoadMembers()
         {
             Members = SqliteDataAccess.GetALLMembers();
@@ -121,10 +121,10 @@ namespace ChamaApp
             
                 
 
-                MemberModel Member = new MemberModel()
+                Member Member = new Member()
             {
                 Id = Convert.ToInt32(txtId.Text.Trim()),
-                IdentityNo = Convert.ToInt64(txtIdNumber.Text.Trim()),
+                IdentityNo = txtIdNumber.Text.Trim(),
                 MemberName = SqliteDataAccess.ToPropercase(txtMemberName.Text.Trim()),
                 IsActive=((int)chkActive.CheckState),
                 IsMember = 1
