@@ -18,8 +18,10 @@ namespace ChamaApp
         private bool EditMode = false;
 
         private List<Member> Members = null;
+
         private void LoadMembers()
         {
+            
             Members = SqliteDataAccess.GetALLMembers();
             dtgMembers.DataSource = Members;
             dtgMembers.Columns[0].Visible = false;
@@ -42,6 +44,7 @@ namespace ChamaApp
         }
         private void ShowAllPanel()
         {
+            
             LoadMembers();
 
             MemberAddEditPanel.Visible = false;

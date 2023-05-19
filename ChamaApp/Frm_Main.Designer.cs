@@ -1,6 +1,6 @@
 ﻿namespace ChamaApp
 {
-    partial class FrmMain
+    partial class Frm_Main
     {
         /// <summary>
         /// Required designer variable.
@@ -43,6 +43,7 @@
             this.btnReceiptMembers = new System.Windows.Forms.Button();
             this.btnTransactions = new System.Windows.Forms.Button();
             this.panelRegistrationSubMenu = new System.Windows.Forms.Panel();
+            this.btnLoanType_ = new System.Windows.Forms.Button();
             this.btnAccounts = new System.Windows.Forms.Button();
             this.btnBanks = new System.Windows.Forms.Button();
             this.btnMembers = new System.Windows.Forms.Button();
@@ -55,7 +56,6 @@
             this.panelStatusBar = new System.Windows.Forms.Panel();
             this.panelChildForm = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnLoanType_ = new System.Windows.Forms.Button();
             this.panelSideMenu.SuspendLayout();
             this.panelUserSubMenu.SuspendLayout();
             this.panelLoanSubMenu.SuspendLayout();
@@ -314,6 +314,24 @@
             this.panelRegistrationSubMenu.Size = new System.Drawing.Size(233, 311);
             this.panelRegistrationSubMenu.TabIndex = 1;
             // 
+            // btnLoanType_
+            // 
+            this.btnLoanType_.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnLoanType_.FlatAppearance.BorderSize = 0;
+            this.btnLoanType_.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(122)))), ((int)(((byte)(87)))));
+            this.btnLoanType_.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLoanType_.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnLoanType_.ForeColor = System.Drawing.Color.LightGray;
+            this.btnLoanType_.Location = new System.Drawing.Point(0, 200);
+            this.btnLoanType_.Name = "btnLoanType_";
+            this.btnLoanType_.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnLoanType_.Size = new System.Drawing.Size(233, 40);
+            this.btnLoanType_.TabIndex = 8;
+            this.btnLoanType_.Text = "Loan Types";
+            this.btnLoanType_.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLoanType_.UseVisualStyleBackColor = true;
+            this.btnLoanType_.Click += new System.EventHandler(this.btnLoanType_Click);
+            // 
             // btnAccounts
             // 
             this.btnAccounts.Dock = System.Windows.Forms.DockStyle.Top;
@@ -475,32 +493,13 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::ChamaApp.Properties.Resources.group;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(63, 75);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(734, 508);
+            this.pictureBox1.Size = new System.Drawing.Size(671, 433);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // btnLoanType_
-            // 
-            this.btnLoanType_.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnLoanType_.FlatAppearance.BorderSize = 0;
-            this.btnLoanType_.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(122)))), ((int)(((byte)(87)))));
-            this.btnLoanType_.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLoanType_.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnLoanType_.ForeColor = System.Drawing.Color.LightGray;
-            this.btnLoanType_.Location = new System.Drawing.Point(0, 200);
-            this.btnLoanType_.Name = "btnLoanType_";
-            this.btnLoanType_.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnLoanType_.Size = new System.Drawing.Size(233, 40);
-            this.btnLoanType_.TabIndex = 8;
-            this.btnLoanType_.Text = "Loan Types";
-            this.btnLoanType_.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLoanType_.UseVisualStyleBackColor = true;
-            this.btnLoanType_.Click += new System.EventHandler(this.btnLoanType_Click);
             // 
             // FrmMain
             // 
@@ -517,6 +516,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
             this.Text = "ChamaApp";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.panelSideMenu.ResumeLayout(false);
             this.panelUserSubMenu.ResumeLayout(false);
             this.panelLoanSubMenu.ResumeLayout(false);

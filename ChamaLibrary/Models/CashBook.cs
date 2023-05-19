@@ -9,7 +9,7 @@ namespace ChamaLibrary.Models
     public class CashBook
     {
         public int Id { get; set; }
-        public DateTime Trans_Date { get; set; }
+        public DateTime TransDate { get; set; }
         public string Month { get; set; }
         public int AccountId { get; set; }
         public decimal Amount { get; set; }

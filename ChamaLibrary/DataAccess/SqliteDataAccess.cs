@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Dapper.SqlMapper;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
@@ -25,6 +26,7 @@ namespace ChamaLibrary.DataAccess
         public static string UserName;
         public static DateTime FinYearStart;
         public static DateTime FinYearEnd;
+        public static string FinYear;
 
         //Helpers
         private static string LoadConnectionString(string Id = "Default")=>ConfigurationManager.ConnectionStrings[Id].ToString();
@@ -500,7 +502,7 @@ namespace ChamaLibrary.DataAccess
                 }
             }
             return check;
-        }      
+        }
         public static AccountVM GetAccountById(int Id)
         {
             try
@@ -566,6 +568,130 @@ namespace ChamaLibrary.DataAccess
             }
         }
 
+        //Users
+
+        public static bool VerifyUserLogin(string UserName, string Password)
+        {
+            return true;
+        }
+        public static List<User> GetALLUsers()
+        {
+            try
+            {
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    var OutPut = cnn.Query<User>("select * From Users;", new DynamicParameters());
+                    return OutPut.ToList();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(" Error getting User(s)", "Esent@ Accountant", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+        public static bool CheckIfUserExist(string UserName)
+        {
+            bool check = false;
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                try
+                {
+                    int Found = cnn.ExecuteScalar<int>("select count(*) from Users WHERE UserName=@UserName", new { UserName });
+                    if (Found > 0) { check = true; }
+
+                }
+                catch (Exception)
+                {
+                    check = true;
+                    MessageBox.Show(" Error checking related User", "Esent@ Accountant", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            return check;
+        }
+        public static bool CheckIfUserIsReferenced(int UserId)
+        {
+            bool check = false;
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                try
+                {
+                    int Found = cnn.ExecuteScalar<int>("select count(*) from Cashbooks WHERE UserId=@UserId", new { UserId });
+                    if (Found > 0) { check = true; }
+
+                }
+                catch (Exception)
+                {
+                    check = true;
+                    MessageBox.Show(" Error checking if User has been referenced on another table", "@ Chamaz", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            return check;
+        }
+        public static User GetUserById(int Id)
+        {
+            try
+            {
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    var result = cnn.QueryFirstOrDefault<User>("select * From Users where Id=@Id", new { Id });
+                    return result;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(" Error getting User by id", "Esent@ Accountant", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+        }
+        public static int InsertUser(User User)
+        {
+            try
+            {
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    var result = cnn.Execute("insert into Users(FirstName,LastName,UserName,PassWord,Telephone) values(@FirstName,@LastName,@UserName,@PassWord,@Telephone)", User);
+                    return result;
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
+        public static int UpdateUser(User User)
+        {
+            try
+            {
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    var result = cnn.Execute("update Users set FirstName=@FirstName,LastName=@LastName,UserName=@UserName,PassWord=@PassWord,Telephone=@Telephone where Id=@Id", User);
+                    return result;
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+
+
+        }
+        public static int DeleteUser(int Id)
+        {
+            try
+            {
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    var result = cnn.Execute("delete from Users where Id=@Id", new { Id = Id });
+                    return result;
+                }
+
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
 
         //Members
 
@@ -717,7 +843,39 @@ namespace ChamaLibrary.DataAccess
                 return 0;
             }
         }
+        public static Member GetOnlyNonMemberById()
+        {
+            try
+            {
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    var result = cnn.QueryFirstOrDefault<Member>("Select * From Members where IsMember=0", new { });
+                    return result;
+                }
+            }
+            catch (Exception)
+            {
 
+                throw;
+
+
+            }
+        }
+        public static int InsertDefaultNonMember()
+        {
+            try
+            {
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    var result = cnn.Execute("insert into Members(IdentityNo,MemberName,IsActive,IsMember) values(@IdentityNo,@MemberName,@IsActive,@IsMember)", new { IdentityNo=0, MemberName="Non Member", IsActive=1, IsMember =0});
+                    return result;
+                }
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
         //NonMembers
 
         public static List<Member> GetALLNonMembers()
@@ -1096,7 +1254,7 @@ namespace ChamaLibrary.DataAccess
             try
             {
 
-                var Upresult = cnn.Execute("update CashBooks set Trans_Date=@Trans_Date,Month=@Month,AccountId=@AccountId," +
+                var Upresult = cnn.Execute("update CashBooks set TransDate=@TransDate,Month=@Month,AccountId=@AccountId," +
                     "Amount=@Amount,AmountWords=@AmountWords,PayMode=@PayMode,PayModeNo=@PayModeNo,CreditOrDebit=@CreditOrDebit," +
                     "Category=@Category,BankDate=@BankDate,UserId=@UserId,FinYearId=@FinYearId where Id=@Id", CashBook);
                 if (Upresult < 0) { return 0; }
@@ -1258,7 +1416,7 @@ namespace ChamaLibrary.DataAccess
                             CashBook CashBook = new CashBook
                             {
                                 Id = 0,
-                                Trans_Date = receipt.TransDate,
+                                TransDate = receipt.TransDate,
                                 Month = receipt.Month,
                                 AccountId = receipt.AccountId,
                                 Amount = receipt.Amount,
@@ -1313,7 +1471,7 @@ namespace ChamaLibrary.DataAccess
                             CashBook CashBook = new CashBook
                             {
                                 Id = receipt.CashBookId,
-                                Trans_Date = receipt.TransDate,
+                                TransDate = receipt.TransDate,
                                 Month = receipt.Month,
                                 AccountId = receipt.AccountId,
                                 Amount = receipt.Amount,

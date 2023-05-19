@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace ChamaApp
 {
-    public partial class FrmMain : Form
+    public partial class Frm_Main : Form
     {
-        public FrmMain()
+        public Frm_Main()
         {
             InitializeComponent();
             HideAllSubMenus();
@@ -130,7 +130,7 @@ namespace ChamaApp
         private void btnUsers_Click(object sender, EventArgs e)
         {
             //OpenChildForm(new Frm_Users());
-            OpenChildForm(new FrmVoteMaterial());
+            OpenChildForm(new Frm_Users());
             HideAllSubMenus();
         }
         private void btnAssignRoles_Click(object sender, EventArgs e)
@@ -175,6 +175,9 @@ namespace ChamaApp
             btnRegistration.ForeColor = Color.Gainsboro;
         }
 
-       
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

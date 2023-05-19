@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataAccess\SqliteDataAccess.cs" />
+    <Compile Include="DataAccess\UsableFunctions.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Bank.cs" />
     <Compile Include="Models\CashBookVote.cs" />

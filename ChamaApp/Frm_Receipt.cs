@@ -24,6 +24,8 @@ namespace ChamaApp
         List<CashBookVoteVM> CashBookVotes = new List<CashBookVoteVM>();
         List<ReceiptVM> Receipts = new List<ReceiptVM>();
         ReceiptVM Receipt = null;
+        private Member NonMember = null;
+
 
         private void ShowAllPanel()
         {
@@ -36,6 +38,24 @@ namespace ChamaApp
         }
         private void LoadMembers()
         {
+            //check default Non Member
+            NonMember = SqliteDataAccess.GetOnlyNonMemberById();
+
+            if (NonMember==null)
+            {
+                //insert default non member
+                
+                if (SqliteDataAccess.InsertDefaultNonMember()>0)
+                {
+                    //check default Non Member
+                    NonMember = SqliteDataAccess.GetOnlyNonMemberById();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to create default non member", "@Chamaz", MessageBoxButtons.OK);
+                }
+            }
+
             List<Member> Members = new List<Member>();
             Members = SqliteDataAccess.GetALLMembers();
             if (Members != null && Members.Count > 0)
@@ -79,6 +99,7 @@ namespace ChamaApp
             LoadVotes();
             LoadMembers();
             LoadAccounts();
+            rdoMember.Checked = true;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -89,8 +110,7 @@ namespace ChamaApp
         private void cboMemberName_SelectedIndexChanged(object sender, EventArgs e)
         {
             lblMemberName.Text = cboPayerName.Text;
-            Member selectedMember= (Member)cboPayerName.SelectedItem;
-            txtPayerId.Text= selectedMember.Id.ToString();
+            txtPayerId.Text= cboPayerName.SelectedValue.ToString();
             //get receipts for the selected member
             LoadMemberReceipts((int)cboPayerName.SelectedValue);       
         }
@@ -146,6 +166,7 @@ namespace ChamaApp
         }
         private void ClearFields()
         {
+            
             txtRctId.Text = "0";
             //txtRctNo.Text = "";
             txtCshbkId.Text = "0";
@@ -156,7 +177,7 @@ namespace ChamaApp
             dtpBankDate.Value = DateTime.Now;
             TxtTotalAmount.Text = "0.00";
             cboPayMode.SelectedIndex = 0;
-            txtModeNo.Text = "";
+            txtModeNo.Text = "---";
             cboItemName.SelectedIndex = 0;  
             TxtItemAmount.Text = "0.00";
             lbl_AmountAllocated.Text= "0.00";
@@ -284,6 +305,12 @@ namespace ChamaApp
         private void btnSave_Click(object sender, EventArgs e)
         {
             //validate textbox
+            if (IsNonMember && NonMember==null)
+            {
+                MessageBox.Show("Non member id is missing", "@Chamaz", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtPayer.Focus();
+                return;
+            }
             if (IsNonMember && string.IsNullOrEmpty(txtPayer.Text.Trim()))
             {
                 MessageBox.Show("Payer Name should not be empty", "@Chamaz", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -310,18 +337,18 @@ namespace ChamaApp
                 cboAccount.Focus();
                 return;
             }
-            if (!SqliteDataAccess.IsDateWithinFinancialYear(dtpTransDate.Value))
-            {
-                MessageBox.Show("Trans Date is not within the current financial year", "@Chamaz", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                dtpTransDate.Focus();
-                return;
-            }
-            if (!SqliteDataAccess.IsDateWithinFinancialYear(dtpBankDate.Value))
-            {
-                MessageBox.Show("Bank Date is not within the current financial year", "@Chamaz", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                dtpBankDate.Focus();
-                return;
-            }
+            //if (!SqliteDataAccess.IsDateWithinFinancialYear(dtpTransDate.Value))
+            //{
+            //    MessageBox.Show("Trans Date is not within the current financial year", "@Chamaz", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    dtpTransDate.Focus();
+            //    return;
+            //}
+            //if (!SqliteDataAccess.IsDateWithinFinancialYear(dtpBankDate.Value))
+            //{
+            //    MessageBox.Show("Bank Date is not within the current financial year", "@Chamaz", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    dtpBankDate.Focus();
+            //    return;
+            //}
 
             if (decimal.Parse(TxtTotalAmount.Text.Trim()) < 1)
             {
@@ -371,10 +398,10 @@ namespace ChamaApp
                 ReceiptDetails = SqliteDataAccess.ToPropercase(cboPayerName.Text.Trim()),
                 CashBookId = Convert.ToInt32(txtCshbkId.Text.Trim()),
                 TransDate =dtpTransDate.Value,
-                Month =SqliteDataAccess.ToPropercase(cboPayerName.Text.Trim()),
+                Month = UsableFunctions.GetMonthInWords(dtpTransDate.Value.Month),
                 AccountId =(int)cboAccount.SelectedValue,
                 Amount = decimal.Parse(TxtTotalAmount.Text.Trim()),
-                //AmountWords = SqliteDataAccess.ToPropercase(txtModeNo.Text.Trim()),
+                AmountWords = UsableFunctions.ToWords(decimal.Parse(TxtTotalAmount.Text.Trim())),
                 PayMode = SqliteDataAccess.ToPropercase(cboPayMode.Text.Trim()),
                 PayModeNo = SqliteDataAccess.ToPropercase(txtModeNo.Text.Trim()),
                 CreditOrDebit ="Credit",
@@ -480,21 +507,25 @@ namespace ChamaApp
 
         private void rdoMember_CheckedChanged(object sender, EventArgs e)
         {
-            if (rdoMember.Checked)
-            {
-                IsNonMember = false;
-            }
-            else
-            {
-                IsNonMember = true;
-            }
+            ToggleRdoButtons();
         }
 
         private void rdoNonMember_CheckedChanged(object sender, EventArgs e)
         {
-            if (true)
-            {
+            ToggleRdoButtons();
+        }
 
+        private void ToggleRdoButtons()
+        {
+            if (rdoMember.Checked)
+            {
+                IsNonMember = false;
+                cboPayerName.Enabled = true;   
+            }
+            else
+            {
+                IsNonMember = true;
+                cboPayerName.Enabled = false;
             }
         }
     }

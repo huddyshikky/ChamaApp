@@ -16,7 +16,19 @@ namespace ChamaApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMain());
+            Application.Run(new Frm_SplashScreen());
+
+            Frm_Login fLogin = new Frm_Login(new Frm_Main());
+
+            if (fLogin.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new Frm_Main());
+            }
+            else
+            {
+                Application.Exit();
+            }
+
         }
     }
 }

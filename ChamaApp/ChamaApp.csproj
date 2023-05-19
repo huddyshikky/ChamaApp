@@ -14,6 +14,21 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -55,6 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppCloser.cs" />
     <Compile Include="FrmVoteMaterial.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +107,12 @@
     <Compile Include="Frm_LoanRepayment.Designer.cs">
       <DependentUpon>Frm_LoanRepayment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_Login.Designer.cs">
+      <DependentUpon>Frm_Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm_Members.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +130,18 @@
     </Compile>
     <Compile Include="Frm_Receipt.Designer.cs">
       <DependentUpon>Frm_Receipt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_SplashScreen.Designer.cs">
+      <DependentUpon>Frm_SplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm_UserRole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm_UserRole.Designer.cs">
+      <DependentUpon>Frm_UserRole.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm_Users.cs">
       <SubType>Form</SubType>
@@ -153,6 +187,9 @@
     <EmbeddedResource Include="Frm_LoanTypes.resx">
       <DependentUpon>Frm_LoanTypes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Login.resx">
+      <DependentUpon>Frm_Login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_Members.resx">
       <DependentUpon>Frm_Members.cs</DependentUpon>
     </EmbeddedResource>
@@ -161,6 +198,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Receipt.resx">
       <DependentUpon>Frm_Receipt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_SplashScreen.resx">
+      <DependentUpon>Frm_SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_UserRole.resx">
+      <DependentUpon>Frm_UserRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm_Users.resx">
+      <DependentUpon>Frm_Users.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm_Votes.resx">
       <DependentUpon>Frm_Votes.cs</DependentUpon>
@@ -206,6 +252,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Add_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.117.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />

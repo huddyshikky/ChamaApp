@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txtRctId = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.MemberCreditAddEditPanel = new System.Windows.Forms.Panel();
@@ -76,6 +76,8 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.MainGBox = new System.Windows.Forms.GroupBox();
             this.MemberCreditShowAllPanel = new System.Windows.Forms.Panel();
+            this.rdoNonMember = new System.Windows.Forms.RadioButton();
+            this.rdoMember = new System.Windows.Forms.RadioButton();
             this.txtCshbkId = new System.Windows.Forms.TextBox();
             this.dtgMemberReceipts = new System.Windows.Forms.DataGridView();
             this.txtPayerId = new System.Windows.Forms.TextBox();
@@ -87,8 +89,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.rdoMember = new System.Windows.Forms.RadioButton();
-            this.rdoNonMember = new System.Windows.Forms.RadioButton();
             this.MemberCreditAddEditPanel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgItems)).BeginInit();
@@ -150,7 +150,7 @@
             this.MemberCreditAddEditPanel.Controls.Add(this.label7);
             this.MemberCreditAddEditPanel.Controls.Add(this.cboPayMode);
             this.MemberCreditAddEditPanel.Controls.Add(this.groupBox1);
-            this.MemberCreditAddEditPanel.Location = new System.Drawing.Point(21, 319);
+            this.MemberCreditAddEditPanel.Location = new System.Drawing.Point(18, 187);
             this.MemberCreditAddEditPanel.Name = "MemberCreditAddEditPanel";
             this.MemberCreditAddEditPanel.Size = new System.Drawing.Size(694, 373);
             this.MemberCreditAddEditPanel.TabIndex = 5;
@@ -195,7 +195,6 @@
             this.txtModeNo.Name = "txtModeNo";
             this.txtModeNo.Size = new System.Drawing.Size(126, 26);
             this.txtModeNo.TabIndex = 46;
-            this.txtModeNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label12
             // 
@@ -264,7 +263,6 @@
             this.txtPayer.Size = new System.Drawing.Size(515, 26);
             this.txtPayer.TabIndex = 40;
             this.txtPayer.Text = "0.00";
-            this.txtPayer.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnDelete
             // 
@@ -554,34 +552,34 @@
             this.dtgItems.AllowUserToDeleteRows = false;
             this.dtgItems.AllowUserToResizeColumns = false;
             this.dtgItems.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtgItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtgItems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgItems.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dtgItems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtgItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.Item,
             this.Amount});
             this.dtgItems.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgItems.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgItems.DefaultCellStyle = dataGridViewCellStyle3;
             this.dtgItems.EnableHeadersVisualStyles = false;
             this.dtgItems.Location = new System.Drawing.Point(269, 56);
             this.dtgItems.Name = "dtgItems";
@@ -649,6 +647,32 @@
             this.MemberCreditShowAllPanel.Size = new System.Drawing.Size(653, 322);
             this.MemberCreditShowAllPanel.TabIndex = 2;
             // 
+            // rdoNonMember
+            // 
+            this.rdoNonMember.AutoSize = true;
+            this.rdoNonMember.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.rdoNonMember.Location = new System.Drawing.Point(321, 13);
+            this.rdoNonMember.Name = "rdoNonMember";
+            this.rdoNonMember.Size = new System.Drawing.Size(155, 21);
+            this.rdoNonMember.TabIndex = 12;
+            this.rdoNonMember.TabStop = true;
+            this.rdoNonMember.Text = "Receipt Non Member";
+            this.rdoNonMember.UseVisualStyleBackColor = true;
+            this.rdoNonMember.CheckedChanged += new System.EventHandler(this.rdoNonMember_CheckedChanged);
+            // 
+            // rdoMember
+            // 
+            this.rdoMember.AutoSize = true;
+            this.rdoMember.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.rdoMember.Location = new System.Drawing.Point(125, 13);
+            this.rdoMember.Name = "rdoMember";
+            this.rdoMember.Size = new System.Drawing.Size(125, 21);
+            this.rdoMember.TabIndex = 11;
+            this.rdoMember.TabStop = true;
+            this.rdoMember.Text = "Receipt Member";
+            this.rdoMember.UseVisualStyleBackColor = true;
+            this.rdoMember.CheckedChanged += new System.EventHandler(this.rdoMember_CheckedChanged);
+            // 
             // txtCshbkId
             // 
             this.txtCshbkId.Location = new System.Drawing.Point(579, 86);
@@ -662,29 +686,29 @@
             this.dtgMemberReceipts.AllowUserToDeleteRows = false;
             this.dtgMemberReceipts.AllowUserToResizeColumns = false;
             this.dtgMemberReceipts.AllowUserToResizeRows = false;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtgMemberReceipts.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtgMemberReceipts.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgMemberReceipts.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dtgMemberReceipts.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.WhiteSmoke;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgMemberReceipts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgMemberReceipts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dtgMemberReceipts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgMemberReceipts.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgMemberReceipts.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgMemberReceipts.DefaultCellStyle = dataGridViewCellStyle6;
             this.dtgMemberReceipts.EnableHeadersVisualStyles = false;
             this.dtgMemberReceipts.Location = new System.Drawing.Point(21, 116);
             this.dtgMemberReceipts.Name = "dtgMemberReceipts";
@@ -794,32 +818,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(718, 45);
             this.panel1.TabIndex = 10;
-            // 
-            // rdoMember
-            // 
-            this.rdoMember.AutoSize = true;
-            this.rdoMember.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.rdoMember.Location = new System.Drawing.Point(125, 13);
-            this.rdoMember.Name = "rdoMember";
-            this.rdoMember.Size = new System.Drawing.Size(125, 21);
-            this.rdoMember.TabIndex = 11;
-            this.rdoMember.TabStop = true;
-            this.rdoMember.Text = "Receipt Member";
-            this.rdoMember.UseVisualStyleBackColor = true;
-            this.rdoMember.CheckedChanged += new System.EventHandler(this.rdoMember_CheckedChanged);
-            // 
-            // rdoNonMember
-            // 
-            this.rdoNonMember.AutoSize = true;
-            this.rdoNonMember.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.rdoNonMember.Location = new System.Drawing.Point(321, 13);
-            this.rdoNonMember.Name = "rdoNonMember";
-            this.rdoNonMember.Size = new System.Drawing.Size(155, 21);
-            this.rdoNonMember.TabIndex = 12;
-            this.rdoNonMember.TabStop = true;
-            this.rdoNonMember.Text = "Receipt Non Member";
-            this.rdoNonMember.UseVisualStyleBackColor = true;
-            this.rdoNonMember.CheckedChanged += new System.EventHandler(this.rdoNonMember_CheckedChanged);
             // 
             // Frm_Receipt
             // 
