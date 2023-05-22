@@ -17,11 +17,22 @@ namespace ChamaApp
         private bool EditMode = false;
 
         private List<User> Users = null;
-        private void LoadBanks()
+        private void LoadUsers()
         {
             Users = SqliteDataAccess.GetALLUsers();
             dtgUsers.DataSource = Users;
             dtgUsers.Columns[0].Visible = false;
+        }
+        private void LoadRoles()
+        {
+            List<UserRole> UserRoles = new List<UserRole>();
+            UserRoles = SqliteDataAccess.GetALLUserRoles();
+            if (UserRoles != null && UserRoles.Count > 0)
+            {
+                cboRole.DisplayMember = "Role";
+                cboRole.ValueMember = "Id";
+                cboRole.DataSource = UserRoles;
+            }
         }
         public Frm_Users()
         {
@@ -30,6 +41,7 @@ namespace ChamaApp
 
         private void Frm_Users_Load(object sender, EventArgs e)
         {
+            LoadRoles();
             ShowAllPanel();
         }
 
@@ -40,7 +52,7 @@ namespace ChamaApp
         }
         private void ShowAllPanel()
         {
-            LoadBanks();
+            LoadUsers();
 
             BankAddEditPanel.Visible = false;
             BankShowAllPanel.Visible = true;
@@ -118,14 +130,19 @@ namespace ChamaApp
                 return;
             }
 
-            if (SqliteDataAccess.CheckIfUserExist(txtUserName.Text.Trim()))
+            if (!EditMode && SqliteDataAccess.CheckIfUserExist(txtUserName.Text.Trim()))
             {
                 MessageBox.Show("User Name has already been registered", "@Chamaz", MessageBoxButtons.OK);
                 txtUserName.Focus();
                 return;
             }
 
-           
+            if (string.IsNullOrEmpty(cboRole.Text.Trim()))
+            {
+                MessageBox.Show("User Role Cannot be Empty", "@Chamaz", MessageBoxButtons.OK);
+                cboRole.Focus();
+                return;
+            }
             //
 
             User User = new User()
@@ -134,9 +151,10 @@ namespace ChamaApp
                 FirstName = SqliteDataAccess.ToPropercase(txtFirstName.Text),
                 LastName = SqliteDataAccess.ToPropercase(txtLastName.Text),
                 UserName = SqliteDataAccess.ToPropercase(txtUserName.Text),
-                PassWord = SqliteDataAccess.ToPropercase(txtPassWord.Text),
+                PassWord = txtPassWord.Text.Trim(),
                 Telephone = SqliteDataAccess.ToPropercase(txtTelephone.Text),
-                
+                UserRoleId = (int)cboRole.SelectedValue,
+
             };
 
             if (EditMode) //update data
@@ -174,7 +192,7 @@ namespace ChamaApp
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show($"Are you sure to detete User :  {txtFirstName.Text.Trim()} {txtLastName.Text.Trim()} ", "@Chamaz", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show($"Are you sure to delete User :  {txtFirstName.Text.Trim()} {txtLastName.Text.Trim()} ", "@Chamaz", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 if (SqliteDataAccess.CheckIfUserIsReferenced(Convert.ToInt32(txtId.Text.Trim())))
                 {
@@ -203,6 +221,7 @@ namespace ChamaApp
             txtUserName.Text = dtgrow.Cells[3].Value.ToString();
             txtPassWord.Text = dtgrow.Cells[4].Value.ToString();
             txtTelephone.Text = dtgrow.Cells[5].Value.ToString();
+            cboRole.SelectedValue = (int)dtgrow.Cells[6].Value;    
             ShowAddEditPanel(false);
         }
     }

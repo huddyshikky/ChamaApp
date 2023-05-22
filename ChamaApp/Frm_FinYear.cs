@@ -93,7 +93,7 @@ namespace ChamaApp
                 return;
             }
 
-            if (SqliteDataAccess.CheckIfFinYearExist(txtYearName.Text.Trim(), Convert.ToInt32(txtId.Text)))
+            if (!EditMode && SqliteDataAccess.CheckIfFinYearExist(txtYearName.Text.Trim(), Convert.ToInt32(txtId.Text)))
             {
                 MessageBox.Show("FinYear Name has already been registered", "@Chamaz", MessageBoxButtons.OK);
                 txtYearName.Focus();
@@ -116,7 +116,7 @@ namespace ChamaApp
                 if (SqliteDataAccess.UpdateFinYear(FinYear) > 0)
                 {
                     MessageBox.Show($"FinYear : {txtYearName.Text.Trim()} Updated", "@Chamaz", MessageBoxButtons.OK);
-
+                    SqliteDataAccess.SetFinYearVariables(SqliteDataAccess.CurFinYearId);
                 }
                 else
                 {
@@ -146,9 +146,9 @@ namespace ChamaApp
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show($"Are you sure to detete FinYear :  {txtYearName.Text.Trim()}", "@Chamaz", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show($"Are you sure to delete FinYear :  {txtYearName.Text.Trim()}", "@Chamaz", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                if (SqliteDataAccess.CheckIfBankIsReferenced(Convert.ToInt32(txtId.Text.Trim())))
+                if (SqliteDataAccess.CheckIfFinYearIsReferenced(dtpStartDate.Value,dtpEndDate.Value))
                 {
                     MessageBox.Show($"FinYear cannot be Deleted because it is used by other entities", "@Chamaz", MessageBoxButtons.OK);
 
@@ -171,6 +171,8 @@ namespace ChamaApp
             DataGridViewRow dtgrow = dtgFinYears.CurrentRow;
             txtId.Text = dtgrow.Cells[0].Value.ToString(); ;
             txtYearName.Text = dtgrow.Cells[1].Value.ToString();
+            dtpStartDate.Value = Convert.ToDateTime(dtgrow.Cells[2].Value);
+            dtpEndDate.Value = Convert.ToDateTime(dtgrow.Cells[3].Value);
             ShowAddEditPanel(false);
         }
     }

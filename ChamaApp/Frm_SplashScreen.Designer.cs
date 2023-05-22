@@ -33,8 +33,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.splashTimer = new System.Windows.Forms.Timer(this.components);
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.splashTimer = new System.Windows.Forms.Timer(this.components);
             this.panelChildForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -55,6 +55,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.MintCream;
             this.label3.Font = new System.Drawing.Font("Coronet", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(122)))), ((int)(((byte)(87)))));
             this.label3.Location = new System.Drawing.Point(282, 302);
@@ -66,6 +67,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.MintCream;
             this.label2.Font = new System.Drawing.Font("Coronet", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(122)))), ((int)(((byte)(87)))));
             this.label2.Location = new System.Drawing.Point(331, 340);
@@ -77,6 +79,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.MintCream;
             this.label1.Font = new System.Drawing.Font("Coronet", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(122)))), ((int)(((byte)(87)))));
             this.label1.Location = new System.Drawing.Point(290, 378);
@@ -84,11 +87,6 @@
             this.label1.Size = new System.Drawing.Size(149, 38);
             this.label1.TabIndex = 1;
             this.label1.Text = "CHAMAZ";
-            // 
-            // splashTimer
-            // 
-            this.splashTimer.Interval = 2000;
-            this.splashTimer.Tick += new System.EventHandler(this.splashTimer_Tick);
             // 
             // pictureBox2
             // 
@@ -100,6 +98,11 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
+            // 
+            // splashTimer
+            // 
+            this.splashTimer.Interval = 2000;
+            this.splashTimer.Tick += new System.EventHandler(this.splashTimer_Tick);
             // 
             // Frm_SplashScreen
             // 

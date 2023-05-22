@@ -22,7 +22,7 @@ namespace ChamaApp
         private void LoadMembers()
         {
             
-            Members = SqliteDataAccess.GetALLMembers();
+            Members = SqliteDataAccess.GetALLMembers(1);
             dtgMembers.DataSource = Members;
             dtgMembers.Columns[0].Visible = false;
             dtgMembers.Columns[4].Visible = false;
@@ -102,7 +102,7 @@ namespace ChamaApp
                 txtIdNumber.Focus();
                 return;
             }
-            if (SqliteDataAccess.CheckIfIdNumberExist(Int64.Parse(txtIdNumber.Text.Trim()),int.Parse(txtId.Text.Trim())))
+            if (!EditMode && SqliteDataAccess.CheckIfIdNumberExist(Int64.Parse(txtIdNumber.Text.Trim()),int.Parse(txtId.Text.Trim())))
             {
                 MessageBox.Show("Id Number is already in use", "@Chamaz", MessageBoxButtons.OK);
                 txtIdNumber.Focus();
@@ -115,7 +115,7 @@ namespace ChamaApp
                 return;
             }
 
-            if (SqliteDataAccess.CheckIfMemberExist(txtMemberName.Text.Trim(), int.Parse(txtId.Text.Trim())))
+            if (!EditMode && SqliteDataAccess.CheckIfMemberExist(txtMemberName.Text.Trim(), int.Parse(txtId.Text.Trim())))
             {
                 MessageBox.Show("Member Name is already in use", "@Chamaz", MessageBoxButtons.OK);
                 txtMemberName.Focus();
@@ -180,9 +180,13 @@ namespace ChamaApp
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show($"Are you sure to detete Member :  {txtMemberName.Text.Trim()}", "@Chamaz", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show($"Are you sure to delete Member :  {txtMemberName.Text.Trim()}", "@Chamaz", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-
+                if (SqliteDataAccess.CheckIfMemberIsReferenced(Convert.ToInt32(txtId.Text.Trim())))
+                {
+                    MessageBox.Show($"Member cannot be Deleted because of existing transaction Details", "@Chamaz", MessageBoxButtons.OK);
+                    return;
+                }
                 if (SqliteDataAccess.DeleteMember(Convert.ToInt32(txtId.Text.Trim())) > 0)
                 {
                     MessageBox.Show($"Member : {txtMemberName.Text.Trim()} Deleted", "@Chamaz", MessageBoxButtons.OK);

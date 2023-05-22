@@ -38,7 +38,7 @@ namespace ChamaApp
         private void LoadMembers()
         {
             List<Member> Members = new List<Member>();
-            Members = SqliteDataAccess.GetALLMembers();
+            Members = SqliteDataAccess.GetALLMembers(1);
             if (Members != null && Members.Count > 0)
             {
                 cboMemberName.DisplayMember = "MemberName";
@@ -230,7 +230,7 @@ namespace ChamaApp
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show($"Are you sure to detete the selected receipt for Member :  {lblMemberName.Text.Trim()}", "@Chamaz", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show($"Are you sure to delete the selected receipt for Member :  {lblMemberName.Text.Trim()}", "@Chamaz", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
 
                 //if (SqliteDataAccess.DeleteCashBook(Convert.ToInt32(txtCsbkId.Text.Trim())) > 0)

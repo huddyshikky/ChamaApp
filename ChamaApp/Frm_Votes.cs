@@ -98,7 +98,7 @@ namespace ChamaApp
                 return;
             }
             
-            if (SqliteDataAccess.CheckIfVoteExist(txtVoteName.Text.Trim(), Convert.ToInt32(txtId.Text)))
+            if (!EditMode && SqliteDataAccess.CheckIfVoteExist(SqliteDataAccess.ToPropercase(txtVoteName.Text.Trim()), Convert.ToInt32(txtId.Text)))
             {
                 MessageBox.Show("VoteName is already available", "@Chamaz", MessageBoxButtons.OK);
                 txtVoteName.Focus();
@@ -155,8 +155,13 @@ namespace ChamaApp
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show($"Are you sure to detete Vote :  {txtVoteName.Text.Trim()}", "@Chamaz", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show($"Are you sure to delete Vote :  {txtVoteName.Text.Trim()}", "@Chamaz", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
+                if (SqliteDataAccess.CheckIfVoteIsReferenced(Convert.ToInt32(txtId.Text.Trim())))
+                {
+                    MessageBox.Show($"Vote cannot be Deleted because it is use", "@Chamaz", MessageBoxButtons.OK);
+                    return;
+                }
 
                 if (SqliteDataAccess.DeleteVote(Convert.ToInt32(txtId.Text.Trim())) > 0)
                 {

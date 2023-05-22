@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChamaLibrary.DataAccess;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,10 +21,11 @@ namespace ChamaApp
         
         private void HideAllSubMenus()
         {
-            HideSubMunu(panelRegistrationSubMenu);
-            HideSubMunu(panelTransactionsSubMenu);
-            HideSubMunu(panelLoanSubMenu);
-            HideSubMunu(panelUserSubMenu);
+            HideSubMenu(panelRegistrationSubMenu);
+            HideSubMenu(panelTransactionsSubMenu);
+            HideSubMenu(panelLoanSubMenu);
+            HideSubMenu(panelUserSubMenu);
+            HideSubMenu(panelSettingsSubMenu);
 
         }
         private void ShowSubMenu(Panel SubMenu)
@@ -38,7 +40,7 @@ namespace ChamaApp
                 SubMenu.Visible = false;
             }
         }
-        private void HideSubMunu(Panel SubMenu)
+        private void HideSubMenu(Panel SubMenu)
         {
             SubMenu.Visible = false;
             
@@ -54,13 +56,11 @@ namespace ChamaApp
             OpenChildForm(new Frm_Votes());
             HideAllSubMenus();
         }
-
         private void btnLoanType_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Frm_LoanTypes());
             HideAllSubMenus();
         }
-
         private void btnMembers_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Frm_Members());
@@ -98,6 +98,16 @@ namespace ChamaApp
             OpenChildForm(new Frm_Payment());
             HideAllSubMenus();
         }
+        private void btnMemberFines_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Frm_MemberFine());
+            HideAllSubMenus();
+        }
+        private void btnMemberWithdrawals_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Frm_MemberWithdrawal());
+            HideAllSubMenus();
+        }
         #endregion
 
         private void btnLoanManagement_Click(object sender, EventArgs e)
@@ -110,7 +120,6 @@ namespace ChamaApp
             OpenChildForm(new Frm_LoanProcessing());
             HideAllSubMenus();
         }
-
         private void btnRepayLoan_Click(object sender, EventArgs e)
         {
             HideAllSubMenus();
@@ -119,29 +128,40 @@ namespace ChamaApp
 
         private void btnUserManagement_Click(object sender, EventArgs e)
         {
-
             ShowSubMenu(panelUserSubMenu);
         }
-        #region UserManagementSubMenu
-        private void btnRegisterNonMembers_Click(object sender, EventArgs e)
+        #region UserManagementSubMenu     
+        private void btnRoles_Click(object sender, EventArgs e)
         {
+            OpenChildForm(new Frm_UserRole());
             HideAllSubMenus();
         }
         private void btnUsers_Click(object sender, EventArgs e)
         {
-            //OpenChildForm(new Frm_Users());
+            
             OpenChildForm(new Frm_Users());
             HideAllSubMenus();
         }
-        private void btnAssignRoles_Click(object sender, EventArgs e)
+        #endregion 
+        
+        private void btnSettings_Click(object sender, EventArgs e)
         {
-            HideAllSubMenus();
+            ShowSubMenu(panelSettingsSubMenu);
         }
+        #region SettingsSubMenu
+
+        //private void btnRoles_Click(object sender, EventArgs e)
+        //{
+        //    OpenChildForm(new Frm_UserRole());
+        //    HideAllSubMenus();
+        //}
+
+
         #endregion
 
 
         #region ChildForm Logic
-        private Form ActiveForm = null;
+        private new Form ActiveForm =null;
         private void OpenChildForm(Form ChildForm)
         {
             //close any open child form
@@ -172,12 +192,15 @@ namespace ChamaApp
 
         private void btnRegistration_MouseLeave(object sender, EventArgs e)
         {
-            btnRegistration.ForeColor = Color.Gainsboro;
+           // btnRegistration.ForeColor = Color.Gainsboro;
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-
+            lblLogUser.Text = SqliteDataAccess.CurUserName;
+            lblFinYear.Text = SqliteDataAccess.CurFinYear;
         }
+
+        
     }
 }

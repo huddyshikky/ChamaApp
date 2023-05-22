@@ -359,19 +359,19 @@ namespace ChamaLibrary.DataAccess
             {
                 PMonth = PayMonth.Trim();
 
-                if (SqliteDataAccess.FinYear.Length > 4) // years string has got two years concanated
+                if (SqliteDataAccess.CurFinYear.Length > 4) // years string has got two years concanated
                 {
-                    PYear = int.Parse(SqliteDataAccess.FinYear.Split('/')[0]);
-                    PYear2 = int.Parse(SqliteDataAccess.FinYear.Split('/')[1]);
+                    PYear = int.Parse(SqliteDataAccess.CurFinYear.Split('/')[0]);
+                    PYear2 = int.Parse(SqliteDataAccess.CurFinYear.Split('/')[1]);
                 }
 
                 else
                 {
-                    PYear = int.Parse(SqliteDataAccess.FinYear);
+                    PYear = int.Parse(SqliteDataAccess.CurFinYear);
                 }
             }
 
-            if (SqliteDataAccess.FinYear.Length > 4)
+            if (SqliteDataAccess.CurFinYear.Length > 4)
             {
 
                 DateTime DateTo = Convert.ToDateTime($"{PYear}-01-01");
@@ -523,18 +523,18 @@ namespace ChamaLibrary.DataAccess
             {
                 PMonth = PayMonth.Trim();
 
-                if (SqliteDataAccess.FinYear.Length > 4) // years string has got two years concanated
+                if (SqliteDataAccess.CurFinYear.Length > 4) // years string has got two years concanated
                 {
-                    PYear = int.Parse(SqliteDataAccess.FinYear.Split('/')[0]);
-                    PYear2 = int.Parse(SqliteDataAccess.FinYear.Split('/')[1]);
+                    PYear = int.Parse(SqliteDataAccess.CurFinYear.Split('/')[0]);
+                    PYear2 = int.Parse(SqliteDataAccess.CurFinYear.Split('/')[1]);
                 }
                 else
                 {
-                    PYear = int.Parse(SqliteDataAccess.FinYear);
+                    PYear = int.Parse(SqliteDataAccess.CurFinYear);
                 }
             }
 
-            if (SqliteDataAccess.FinYear.Length > 4)
+            if (SqliteDataAccess.CurFinYear.Length > 4)
             {
 
                 DateTime DateFrom = Convert.ToDateTime($"{PYear}-01-01");

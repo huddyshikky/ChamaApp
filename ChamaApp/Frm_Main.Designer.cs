@@ -29,8 +29,10 @@
         private void InitializeComponent()
         {
             this.panelSideMenu = new System.Windows.Forms.Panel();
+            this.panelSettingsSubMenu = new System.Windows.Forms.Panel();
+            this.btnSetFinancialYear = new System.Windows.Forms.Button();
+            this.btnSettings = new System.Windows.Forms.Button();
             this.panelUserSubMenu = new System.Windows.Forms.Panel();
-            this.btnAssignRoles = new System.Windows.Forms.Button();
             this.btnUsers = new System.Windows.Forms.Button();
             this.btnRoles = new System.Windows.Forms.Button();
             this.btnUserManagement = new System.Windows.Forms.Button();
@@ -39,6 +41,8 @@
             this.btnIssueLoan = new System.Windows.Forms.Button();
             this.btnLoanManagement = new System.Windows.Forms.Button();
             this.panelTransactionsSubMenu = new System.Windows.Forms.Panel();
+            this.btnMemberWithdrawals = new System.Windows.Forms.Button();
+            this.btnMemberFines = new System.Windows.Forms.Button();
             this.btnMemberPayments = new System.Windows.Forms.Button();
             this.btnReceiptMembers = new System.Windows.Forms.Button();
             this.btnTransactions = new System.Windows.Forms.Button();
@@ -54,15 +58,21 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panelStatusBar = new System.Windows.Forms.Panel();
+            this.lblFinYear = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblLogUser = new System.Windows.Forms.Label();
             this.panelChildForm = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelSideMenu.SuspendLayout();
+            this.panelSettingsSubMenu.SuspendLayout();
             this.panelUserSubMenu.SuspendLayout();
             this.panelLoanSubMenu.SuspendLayout();
             this.panelTransactionsSubMenu.SuspendLayout();
             this.panelRegistrationSubMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panelStatusBar.SuspendLayout();
             this.panelChildForm.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -71,6 +81,8 @@
             // 
             this.panelSideMenu.AutoScroll = true;
             this.panelSideMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(7)))), ((int)(((byte)(17)))));
+            this.panelSideMenu.Controls.Add(this.panelSettingsSubMenu);
+            this.panelSideMenu.Controls.Add(this.btnSettings);
             this.panelSideMenu.Controls.Add(this.panelUserSubMenu);
             this.panelSideMenu.Controls.Add(this.btnUserManagement);
             this.panelSideMenu.Controls.Add(this.panelLoanSubMenu);
@@ -86,34 +98,61 @@
             this.panelSideMenu.Size = new System.Drawing.Size(250, 561);
             this.panelSideMenu.TabIndex = 0;
             // 
+            // panelSettingsSubMenu
+            // 
+            this.panelSettingsSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.panelSettingsSubMenu.Controls.Add(this.btnSetFinancialYear);
+            this.panelSettingsSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelSettingsSubMenu.Location = new System.Drawing.Point(0, 918);
+            this.panelSettingsSubMenu.Name = "panelSettingsSubMenu";
+            this.panelSettingsSubMenu.Size = new System.Drawing.Size(233, 49);
+            this.panelSettingsSubMenu.TabIndex = 9;
+            // 
+            // btnSetFinancialYear
+            // 
+            this.btnSetFinancialYear.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSetFinancialYear.FlatAppearance.BorderSize = 0;
+            this.btnSetFinancialYear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(122)))), ((int)(((byte)(87)))));
+            this.btnSetFinancialYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSetFinancialYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnSetFinancialYear.ForeColor = System.Drawing.Color.LightGray;
+            this.btnSetFinancialYear.Location = new System.Drawing.Point(0, 0);
+            this.btnSetFinancialYear.Name = "btnSetFinancialYear";
+            this.btnSetFinancialYear.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnSetFinancialYear.Size = new System.Drawing.Size(233, 40);
+            this.btnSetFinancialYear.TabIndex = 1;
+            this.btnSetFinancialYear.Text = "Current Financial Year";
+            this.btnSetFinancialYear.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSetFinancialYear.UseVisualStyleBackColor = true;
+            // 
+            // btnSettings
+            // 
+            this.btnSettings.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSettings.FlatAppearance.BorderSize = 0;
+            this.btnSettings.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(122)))), ((int)(((byte)(87)))));
+            this.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSettings.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnSettings.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnSettings.Location = new System.Drawing.Point(0, 873);
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnSettings.Size = new System.Drawing.Size(233, 45);
+            this.btnSettings.TabIndex = 8;
+            this.btnSettings.Text = "Settings";
+            this.btnSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSettings.UseVisualStyleBackColor = true;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            // 
             // panelUserSubMenu
             // 
             this.panelUserSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.panelUserSubMenu.Controls.Add(this.btnAssignRoles);
             this.panelUserSubMenu.Controls.Add(this.btnUsers);
             this.panelUserSubMenu.Controls.Add(this.btnRoles);
             this.panelUserSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelUserSubMenu.Location = new System.Drawing.Point(0, 733);
+            this.panelUserSubMenu.Location = new System.Drawing.Point(0, 786);
             this.panelUserSubMenu.Name = "panelUserSubMenu";
-            this.panelUserSubMenu.Size = new System.Drawing.Size(233, 129);
+            this.panelUserSubMenu.Size = new System.Drawing.Size(233, 87);
             this.panelUserSubMenu.TabIndex = 7;
-            // 
-            // btnAssignRoles
-            // 
-            this.btnAssignRoles.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAssignRoles.FlatAppearance.BorderSize = 0;
-            this.btnAssignRoles.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(122)))), ((int)(((byte)(87)))));
-            this.btnAssignRoles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAssignRoles.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
-            this.btnAssignRoles.ForeColor = System.Drawing.Color.LightGray;
-            this.btnAssignRoles.Location = new System.Drawing.Point(0, 80);
-            this.btnAssignRoles.Name = "btnAssignRoles";
-            this.btnAssignRoles.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.btnAssignRoles.Size = new System.Drawing.Size(233, 40);
-            this.btnAssignRoles.TabIndex = 10;
-            this.btnAssignRoles.Text = "Assign Roles";
-            this.btnAssignRoles.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAssignRoles.UseVisualStyleBackColor = true;
             // 
             // btnUsers
             // 
@@ -149,7 +188,7 @@
             this.btnRoles.Text = "User Roles";
             this.btnRoles.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRoles.UseVisualStyleBackColor = true;
-            this.btnRoles.Click += new System.EventHandler(this.btnRegisterNonMembers_Click);
+            this.btnRoles.Click += new System.EventHandler(this.btnRoles_Click);
             // 
             // btnUserManagement
             // 
@@ -159,7 +198,7 @@
             this.btnUserManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUserManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnUserManagement.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnUserManagement.Location = new System.Drawing.Point(0, 688);
+            this.btnUserManagement.Location = new System.Drawing.Point(0, 741);
             this.btnUserManagement.Name = "btnUserManagement";
             this.btnUserManagement.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnUserManagement.Size = new System.Drawing.Size(233, 45);
@@ -175,9 +214,9 @@
             this.panelLoanSubMenu.Controls.Add(this.btnRepayLoan);
             this.panelLoanSubMenu.Controls.Add(this.btnIssueLoan);
             this.panelLoanSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelLoanSubMenu.Location = new System.Drawing.Point(0, 602);
+            this.panelLoanSubMenu.Location = new System.Drawing.Point(0, 652);
             this.panelLoanSubMenu.Name = "panelLoanSubMenu";
-            this.panelLoanSubMenu.Size = new System.Drawing.Size(233, 86);
+            this.panelLoanSubMenu.Size = new System.Drawing.Size(233, 89);
             this.panelLoanSubMenu.TabIndex = 5;
             // 
             // btnRepayLoan
@@ -224,7 +263,7 @@
             this.btnLoanManagement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLoanManagement.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnLoanManagement.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnLoanManagement.Location = new System.Drawing.Point(0, 557);
+            this.btnLoanManagement.Location = new System.Drawing.Point(0, 607);
             this.btnLoanManagement.Name = "btnLoanManagement";
             this.btnLoanManagement.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnLoanManagement.Size = new System.Drawing.Size(233, 45);
@@ -237,13 +276,51 @@
             // panelTransactionsSubMenu
             // 
             this.panelTransactionsSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
+            this.panelTransactionsSubMenu.Controls.Add(this.btnMemberWithdrawals);
+            this.panelTransactionsSubMenu.Controls.Add(this.btnMemberFines);
             this.panelTransactionsSubMenu.Controls.Add(this.btnMemberPayments);
             this.panelTransactionsSubMenu.Controls.Add(this.btnReceiptMembers);
             this.panelTransactionsSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTransactionsSubMenu.Location = new System.Drawing.Point(0, 476);
+            this.panelTransactionsSubMenu.Location = new System.Drawing.Point(0, 415);
             this.panelTransactionsSubMenu.Name = "panelTransactionsSubMenu";
-            this.panelTransactionsSubMenu.Size = new System.Drawing.Size(233, 81);
+            this.panelTransactionsSubMenu.Size = new System.Drawing.Size(233, 192);
             this.panelTransactionsSubMenu.TabIndex = 3;
+            // 
+            // btnMemberWithdrawals
+            // 
+            this.btnMemberWithdrawals.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnMemberWithdrawals.FlatAppearance.BorderSize = 0;
+            this.btnMemberWithdrawals.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(122)))), ((int)(((byte)(87)))));
+            this.btnMemberWithdrawals.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMemberWithdrawals.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnMemberWithdrawals.ForeColor = System.Drawing.Color.LightGray;
+            this.btnMemberWithdrawals.Location = new System.Drawing.Point(0, 120);
+            this.btnMemberWithdrawals.Name = "btnMemberWithdrawals";
+            this.btnMemberWithdrawals.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnMemberWithdrawals.Size = new System.Drawing.Size(233, 40);
+            this.btnMemberWithdrawals.TabIndex = 5;
+            this.btnMemberWithdrawals.Text = "Member Withdrawals";
+            this.btnMemberWithdrawals.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMemberWithdrawals.UseVisualStyleBackColor = true;
+            this.btnMemberWithdrawals.Click += new System.EventHandler(this.btnMemberWithdrawals_Click);
+            // 
+            // btnMemberFines
+            // 
+            this.btnMemberFines.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnMemberFines.FlatAppearance.BorderSize = 0;
+            this.btnMemberFines.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(122)))), ((int)(((byte)(87)))));
+            this.btnMemberFines.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMemberFines.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
+            this.btnMemberFines.ForeColor = System.Drawing.Color.LightGray;
+            this.btnMemberFines.Location = new System.Drawing.Point(0, 80);
+            this.btnMemberFines.Name = "btnMemberFines";
+            this.btnMemberFines.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnMemberFines.Size = new System.Drawing.Size(233, 40);
+            this.btnMemberFines.TabIndex = 4;
+            this.btnMemberFines.Text = "Member Fines";
+            this.btnMemberFines.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMemberFines.UseVisualStyleBackColor = true;
+            this.btnMemberFines.Click += new System.EventHandler(this.btnMemberFines_Click);
             // 
             // btnMemberPayments
             // 
@@ -289,7 +366,7 @@
             this.btnTransactions.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTransactions.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnTransactions.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnTransactions.Location = new System.Drawing.Point(0, 431);
+            this.btnTransactions.Location = new System.Drawing.Point(0, 370);
             this.btnTransactions.Name = "btnTransactions";
             this.btnTransactions.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnTransactions.Size = new System.Drawing.Size(233, 45);
@@ -311,7 +388,7 @@
             this.panelRegistrationSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelRegistrationSubMenu.Location = new System.Drawing.Point(0, 120);
             this.panelRegistrationSubMenu.Name = "panelRegistrationSubMenu";
-            this.panelRegistrationSubMenu.Size = new System.Drawing.Size(233, 311);
+            this.panelRegistrationSubMenu.Size = new System.Drawing.Size(233, 250);
             this.panelRegistrationSubMenu.TabIndex = 1;
             // 
             // btnLoanType_
@@ -390,6 +467,7 @@
             // 
             this.btnFinYear.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnFinYear.FlatAppearance.BorderSize = 0;
+            this.btnFinYear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(122)))), ((int)(((byte)(87)))));
             this.btnFinYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFinYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.btnFinYear.ForeColor = System.Drawing.Color.LightGray;
@@ -425,7 +503,7 @@
             // 
             this.btnRegistration.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnRegistration.FlatAppearance.BorderSize = 0;
-            this.btnRegistration.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.ControlDark;
+            this.btnRegistration.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(122)))), ((int)(((byte)(87)))));
             this.btnRegistration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegistration.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRegistration.ForeColor = System.Drawing.Color.Gainsboro;
@@ -438,8 +516,6 @@
             this.btnRegistration.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRegistration.UseVisualStyleBackColor = true;
             this.btnRegistration.Click += new System.EventHandler(this.btnRegistration_Click);
-            this.btnRegistration.MouseLeave += new System.EventHandler(this.btnRegistration_MouseLeave);
-            this.btnRegistration.MouseHover += new System.EventHandler(this.btnRegistration_MouseHover);
             // 
             // panelLogo
             // 
@@ -475,11 +551,65 @@
             // panelStatusBar
             // 
             this.panelStatusBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
+            this.panelStatusBar.Controls.Add(this.lblFinYear);
+            this.panelStatusBar.Controls.Add(this.label2);
+            this.panelStatusBar.Controls.Add(this.label3);
+            this.panelStatusBar.Controls.Add(this.lblLogUser);
             this.panelStatusBar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelStatusBar.Location = new System.Drawing.Point(250, 508);
             this.panelStatusBar.Name = "panelStatusBar";
             this.panelStatusBar.Size = new System.Drawing.Size(734, 53);
             this.panelStatusBar.TabIndex = 1;
+            // 
+            // lblFinYear
+            // 
+            this.lblFinYear.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblFinYear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblFinYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.lblFinYear.ForeColor = System.Drawing.Color.Salmon;
+            this.lblFinYear.Location = new System.Drawing.Point(108, 0);
+            this.lblFinYear.Name = "lblFinYear";
+            this.lblFinYear.Size = new System.Drawing.Size(163, 53);
+            this.lblFinYear.TabIndex = 8;
+            this.lblFinYear.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label2
+            // 
+            this.label2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.label2.ForeColor = System.Drawing.Color.LightSteelBlue;
+            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(108, 53);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Financial Year :";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label3
+            // 
+            this.label3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.LightSteelBlue;
+            this.label3.Location = new System.Drawing.Point(503, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(93, 53);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Logged As :";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblLogUser
+            // 
+            this.lblLogUser.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblLogUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblLogUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold);
+            this.lblLogUser.ForeColor = System.Drawing.Color.Salmon;
+            this.lblLogUser.Location = new System.Drawing.Point(596, 0);
+            this.lblLogUser.Name = "lblLogUser";
+            this.lblLogUser.Size = new System.Drawing.Size(138, 53);
+            this.lblLogUser.TabIndex = 4;
+            this.lblLogUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panelChildForm
             // 
@@ -501,7 +631,7 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // FrmMain
+            // Frm_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -512,12 +642,13 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(950, 600);
-            this.Name = "FrmMain";
+            this.Name = "Frm_Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
             this.Text = "ChamaApp";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.panelSideMenu.ResumeLayout(false);
+            this.panelSettingsSubMenu.ResumeLayout(false);
             this.panelUserSubMenu.ResumeLayout(false);
             this.panelLoanSubMenu.ResumeLayout(false);
             this.panelTransactionsSubMenu.ResumeLayout(false);
@@ -525,6 +656,7 @@
             this.panelLogo.ResumeLayout(false);
             this.panelLogo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panelStatusBar.ResumeLayout(false);
             this.panelChildForm.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -559,8 +691,16 @@
         private System.Windows.Forms.Button btnBanks;
         private System.Windows.Forms.Button btnAccounts;
         private System.Windows.Forms.Button btnUsers;
-        private System.Windows.Forms.Button btnAssignRoles;
         private System.Windows.Forms.Button btnLoanType_;
+        private System.Windows.Forms.Panel panelSettingsSubMenu;
+        private System.Windows.Forms.Button btnSetFinancialYear;
+        private System.Windows.Forms.Button btnSettings;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblLogUser;
+        private System.Windows.Forms.Label lblFinYear;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnMemberWithdrawals;
+        private System.Windows.Forms.Button btnMemberFines;
     }
 }
 

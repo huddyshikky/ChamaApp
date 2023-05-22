@@ -78,7 +78,7 @@
     <Compile Include="Models\Bank.cs" />
     <Compile Include="Models\CashBookVote.cs" />
     <Compile Include="Models\CashBook.cs" />
-    <Compile Include="Models\FineWithdrawal.cs" />
+    <Compile Include="Models\MemberFine.cs" />
     <Compile Include="Models\FinYear.cs" />
     <Compile Include="Models\Loan.cs" />
     <Compile Include="Models\LoanTransaction.cs" />
@@ -90,12 +90,15 @@
     <Compile Include="Enums\TransCategoryEnum.cs" />
     <Compile Include="Enums\TransTypeEnum.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserRole.cs" />
     <Compile Include="Models\Vote.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\GenericRepository.cs" />
     <Compile Include="Repository\IGenericRepository.cs" />
     <Compile Include="ViewModel\AccountVM.cs" />
     <Compile Include="ViewModel\CashBookVoteVM.cs" />
+    <Compile Include="ViewModel\MemberFineVM.cs" />
+    <Compile Include="ViewModel\PaymentVM.cs" />
     <Compile Include="ViewModel\ReceiptVM.cs" />
   </ItemGroup>
   <ItemGroup />

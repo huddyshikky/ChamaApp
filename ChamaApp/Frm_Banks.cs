@@ -91,7 +91,7 @@ namespace ChamaApp
                 return;
             }
 
-            if (SqliteDataAccess.CheckIfBankExist(txtBankName.Text.Trim(), Convert.ToInt32(txtId.Text)))
+            if (!EditMode && SqliteDataAccess.CheckIfBankExist(txtBankName.Text.Trim(), Convert.ToInt32(txtId.Text)))
             {
                 MessageBox.Show("BankName has already been registered", "@Chamaz", MessageBoxButtons.OK);
                 txtBankName.Focus();
@@ -142,12 +142,11 @@ namespace ChamaApp
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show($"Are you sure to detete Bank :  {txtBankName.Text.Trim()}", "@Chamaz", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show($"Are you sure to delete Bank :  {txtBankName.Text.Trim()}", "@Chamaz", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 if (SqliteDataAccess.CheckIfBankIsReferenced(Convert.ToInt32(txtId.Text.Trim())))
                 {
-                    MessageBox.Show($"Bank cannot be Deleted because it is used by other entities", "@Chamaz", MessageBoxButtons.OK);
-
+                    MessageBox.Show($"Bank cannot be Deleted because it is used by account Details", "@Chamaz", MessageBoxButtons.OK);
                     return;
                 }
                 if (SqliteDataAccess.DeleteBank(Convert.ToInt32(txtId.Text.Trim())) > 0)

@@ -14,5 +14,6 @@ namespace ChamaLibrary.Models
         public string UserName { get; set; }
         public string PassWord { get; set; }
         public string Telephone { get; set; }
+        public int UserRoleId { get; set; }
     }
 }

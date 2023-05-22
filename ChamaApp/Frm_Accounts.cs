@@ -188,9 +188,14 @@ namespace ChamaApp
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show($"Are you sure to detete Account :  {txtAccountName.Text.Trim()}", "@Chamaz", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show($"Are you sure to delete Account :  {txtAccountName.Text.Trim()}", "@Chamaz", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
+                if (SqliteDataAccess.CheckIfAccountIsReferenced(Convert.ToInt32(txtId.Text.Trim())))
+                {
+                    MessageBox.Show($"Account cannot be Deleted because it is in user", "@Chamaz", MessageBoxButtons.OK);
 
+                    return;
+                }
                 if (SqliteDataAccess.DeleteAccount(Convert.ToInt32(txtId.Text.Trim())) > 0)
                 {
                     MessageBox.Show($"Account : {txtAccountName.Text.Trim()} Deleted", "@Chamaz", MessageBoxButtons.OK);

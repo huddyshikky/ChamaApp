@@ -31,108 +31,29 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtUserName = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtTelephone = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtLastName = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
-            this.txtPassWord = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.MainGBox = new System.Windows.Forms.GroupBox();
             this.BankAddEditPanel = new System.Windows.Forms.Panel();
             this.btnDelete = new System.Windows.Forms.Button();
             this.txtId = new System.Windows.Forms.TextBox();
-            this.txtFirstName = new System.Windows.Forms.TextBox();
+            this.txtUserRole = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.BankShowAllPanel = new System.Windows.Forms.Panel();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.dtgUsers = new System.Windows.Forms.DataGridView();
+            this.dtgUserRoles = new System.Windows.Forms.DataGridView();
             this.button4 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.MainGBox.SuspendLayout();
             this.BankAddEditPanel.SuspendLayout();
             this.BankShowAllPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgUsers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgUserRoles)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.LightGray;
-            this.label6.Location = new System.Drawing.Point(25, 133);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(76, 17);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "PassWord :";
-            // 
-            // txtUserName
-            // 
-            this.txtUserName.Font = new System.Drawing.Font("Roboto Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserName.Location = new System.Drawing.Point(108, 103);
-            this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(233, 23);
-            this.txtUserName.TabIndex = 15;
-            this.txtUserName.WordWrap = false;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.LightGray;
-            this.label5.Location = new System.Drawing.Point(25, 75);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 17);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "TelePhone :";
-            // 
-            // txtTelephone
-            // 
-            this.txtTelephone.Font = new System.Drawing.Font("Roboto Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTelephone.Location = new System.Drawing.Point(108, 74);
-            this.txtTelephone.Name = "txtTelephone";
-            this.txtTelephone.Size = new System.Drawing.Size(233, 23);
-            this.txtTelephone.TabIndex = 13;
-            this.txtTelephone.WordWrap = false;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.LightGray;
-            this.label4.Location = new System.Drawing.Point(23, 104);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(78, 17);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "UserName :";
-            // 
-            // txtLastName
-            // 
-            this.txtLastName.Font = new System.Drawing.Font("Roboto Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLastName.Location = new System.Drawing.Point(108, 45);
-            this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(233, 23);
-            this.txtLastName.TabIndex = 11;
-            this.txtLastName.WordWrap = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.LightGray;
-            this.label2.Location = new System.Drawing.Point(20, 45);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 17);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Last Name :";
             // 
             // label1
             // 
@@ -141,11 +62,11 @@
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Hoefler Text Black", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.LightGray;
-            this.label1.Location = new System.Drawing.Point(405, 0);
+            this.label1.Location = new System.Drawing.Point(610, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(395, 45);
+            this.label1.Size = new System.Drawing.Size(190, 45);
             this.label1.TabIndex = 1;
-            this.label1.Text = "System Users Registration";
+            this.label1.Text = "Users Roles";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnClose
@@ -160,15 +81,7 @@
             this.btnClose.TabIndex = 0;
             this.btnClose.Text = "X";
             this.btnClose.UseVisualStyleBackColor = false;
-            // 
-            // txtPassWord
-            // 
-            this.txtPassWord.Font = new System.Drawing.Font("Roboto Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassWord.Location = new System.Drawing.Point(108, 132);
-            this.txtPassWord.Name = "txtPassWord";
-            this.txtPassWord.Size = new System.Drawing.Size(233, 23);
-            this.txtPassWord.TabIndex = 17;
-            this.txtPassWord.WordWrap = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // panel2
             // 
@@ -196,17 +109,9 @@
             this.BankAddEditPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.BankAddEditPanel.Controls.Add(this.txtPassWord);
-            this.BankAddEditPanel.Controls.Add(this.label6);
-            this.BankAddEditPanel.Controls.Add(this.txtUserName);
-            this.BankAddEditPanel.Controls.Add(this.label5);
-            this.BankAddEditPanel.Controls.Add(this.txtTelephone);
-            this.BankAddEditPanel.Controls.Add(this.label4);
-            this.BankAddEditPanel.Controls.Add(this.txtLastName);
-            this.BankAddEditPanel.Controls.Add(this.label2);
             this.BankAddEditPanel.Controls.Add(this.btnDelete);
             this.BankAddEditPanel.Controls.Add(this.txtId);
-            this.BankAddEditPanel.Controls.Add(this.txtFirstName);
+            this.BankAddEditPanel.Controls.Add(this.txtUserRole);
             this.BankAddEditPanel.Controls.Add(this.btnCancel);
             this.BankAddEditPanel.Controls.Add(this.btnSave);
             this.BankAddEditPanel.Controls.Add(this.label3);
@@ -221,12 +126,13 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.LightGray;
-            this.btnDelete.Location = new System.Drawing.Point(190, 179);
+            this.btnDelete.Location = new System.Drawing.Point(189, 56);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(68, 26);
             this.btnDelete.TabIndex = 9;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // txtId
             // 
@@ -238,14 +144,14 @@
             this.txtId.Visible = false;
             this.txtId.WordWrap = false;
             // 
-            // txtFirstName
+            // txtUserRole
             // 
-            this.txtFirstName.Font = new System.Drawing.Font("Roboto Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFirstName.Location = new System.Drawing.Point(108, 16);
-            this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(233, 23);
-            this.txtFirstName.TabIndex = 7;
-            this.txtFirstName.WordWrap = false;
+            this.txtUserRole.Font = new System.Drawing.Font("Roboto Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUserRole.Location = new System.Drawing.Point(108, 16);
+            this.txtUserRole.Name = "txtUserRole";
+            this.txtUserRole.Size = new System.Drawing.Size(233, 23);
+            this.txtUserRole.TabIndex = 7;
+            this.txtUserRole.WordWrap = false;
             // 
             // btnCancel
             // 
@@ -253,12 +159,13 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.LightGray;
-            this.btnCancel.Location = new System.Drawing.Point(108, 179);
+            this.btnCancel.Location = new System.Drawing.Point(107, 56);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(68, 26);
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -266,12 +173,13 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.LightGray;
-            this.btnSave.Location = new System.Drawing.Point(272, 179);
+            this.btnSave.Location = new System.Drawing.Point(271, 56);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(68, 26);
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label3
             // 
@@ -290,7 +198,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.BankShowAllPanel.Controls.Add(this.btnAdd);
-            this.BankShowAllPanel.Controls.Add(this.dtgUsers);
+            this.BankShowAllPanel.Controls.Add(this.dtgUserRoles);
             this.BankShowAllPanel.Location = new System.Drawing.Point(41, 19);
             this.BankShowAllPanel.Name = "BankShowAllPanel";
             this.BankShowAllPanel.Size = new System.Drawing.Size(538, 303);
@@ -308,18 +216,19 @@
             this.btnAdd.TabIndex = 4;
             this.btnAdd.Text = "Add New";
             this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // dtgUsers
+            // dtgUserRoles
             // 
-            this.dtgUsers.AllowUserToAddRows = false;
-            this.dtgUsers.AllowUserToDeleteRows = false;
-            this.dtgUsers.AllowUserToResizeColumns = false;
-            this.dtgUsers.AllowUserToResizeRows = false;
+            this.dtgUserRoles.AllowUserToAddRows = false;
+            this.dtgUserRoles.AllowUserToDeleteRows = false;
+            this.dtgUserRoles.AllowUserToResizeColumns = false;
+            this.dtgUserRoles.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gainsboro;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtgUsers.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dtgUsers.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dtgUsers.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.dtgUserRoles.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dtgUserRoles.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dtgUserRoles.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -327,9 +236,9 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgUsers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dtgUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgUsers.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dtgUserRoles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dtgUserRoles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgUserRoles.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -337,14 +246,15 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgUsers.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dtgUsers.EnableHeadersVisualStyles = false;
-            this.dtgUsers.Location = new System.Drawing.Point(14, 49);
-            this.dtgUsers.Name = "dtgUsers";
-            this.dtgUsers.ReadOnly = true;
-            this.dtgUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtgUsers.Size = new System.Drawing.Size(365, 225);
-            this.dtgUsers.TabIndex = 2;
+            this.dtgUserRoles.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dtgUserRoles.EnableHeadersVisualStyles = false;
+            this.dtgUserRoles.Location = new System.Drawing.Point(14, 49);
+            this.dtgUserRoles.Name = "dtgUserRoles";
+            this.dtgUserRoles.ReadOnly = true;
+            this.dtgUserRoles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtgUserRoles.Size = new System.Drawing.Size(365, 225);
+            this.dtgUserRoles.TabIndex = 2;
+            this.dtgUserRoles.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dtgUserRoles_RowHeaderMouseDoubleClick);
             // 
             // button4
             // 
@@ -377,41 +287,33 @@
             this.Controls.Add(this.panel1);
             this.Name = "Frm_UserRole";
             this.Text = "Frm_UserRole";
+            this.Load += new System.EventHandler(this.Frm_UserRole_Load);
             this.panel2.ResumeLayout(false);
             this.MainGBox.ResumeLayout(false);
             this.BankAddEditPanel.ResumeLayout(false);
             this.BankAddEditPanel.PerformLayout();
             this.BankShowAllPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgUsers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgUserRoles)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtUserName;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtTelephone;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtLastName;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.TextBox txtPassWord;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox MainGBox;
         private System.Windows.Forms.Panel BankAddEditPanel;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.TextBox txtId;
-        private System.Windows.Forms.TextBox txtFirstName;
+        private System.Windows.Forms.TextBox txtUserRole;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel BankShowAllPanel;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.DataGridView dtgUsers;
+        private System.Windows.Forms.DataGridView dtgUserRoles;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Panel panel1;
     }

@@ -12,7 +12,7 @@ namespace ChamaLibrary.ViewModel
         public int ReceiptNo { get; set; }
         public int PayerId { get; set; }
         public string Payer { get; set; }
-        public string ReceiptDetails { get; set; }
+        public string Details { get; set; }
         public int CashBookId { get; set; }
         public DateTime TransDate { get; set; }
         public string Month { get; set; }
@@ -25,6 +25,5 @@ namespace ChamaLibrary.ViewModel
         public string Category { get; set; } //MemberDeposits,NonMemberDeposits 
         public DateTime BankDate { get; set; }
         public int UserId { get; set; }
-        public int FinYearId { get; set; }
     }
 }

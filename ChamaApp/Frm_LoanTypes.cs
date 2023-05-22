@@ -90,7 +90,7 @@ namespace ChamaApp
                 return;
             }
 
-            if (SqliteDataAccess.CheckIfVoteExist(txtLoanType.Text.Trim(), Convert.ToInt32(txtId.Text)))
+            if (!EditMode && SqliteDataAccess.CheckIfVoteExist(txtLoanType.Text.Trim(), Convert.ToInt32(txtId.Text)))
             {
                 MessageBox.Show("Loan type is already available", "@Chamaz", MessageBoxButtons.OK);
                 txtLoanType.Focus();
@@ -149,8 +149,13 @@ namespace ChamaApp
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show($"Are you sure to detete Loan type :  {txtLoanType.Text.Trim()}", "@Chamaz", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show($"Are you sure to delete Loan type :  {txtLoanType.Text.Trim()}", "@Chamaz", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
+                if (SqliteDataAccess.CheckIfLoanTypeIsReferenced(Convert.ToInt32(txtId.Text.Trim())))
+                {
+                    MessageBox.Show($"Bank cannot be Deleted because it is used by account Details", "@Chamaz", MessageBoxButtons.OK);
+                    return;
+                }
 
                 if (SqliteDataAccess.DeleteLoanType(Convert.ToInt32(txtId.Text.Trim())) > 0)
                 {
