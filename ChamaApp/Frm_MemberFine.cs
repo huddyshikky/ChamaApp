@@ -106,7 +106,7 @@ namespace ChamaApp
             dtgMemberFine.Columns[10].Visible = false; //PayMode
             dtgMemberFine.Columns[11].Visible = false; //PayModeNo
             dtgMemberFine.Columns[12].Visible = false; //Category
-            dtgMemberFine.Columns[13].Visible = false; //BankDate
+            //dtgMemberFine.Columns[13].Visible = false; //BankDate
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -138,7 +138,7 @@ namespace ChamaApp
         }
         private void ClearFields()
         {
-
+            txtFineId.Text = "0";
             txtPayCshbkId.Text = "0";
             txtRctCshbkId.Text = "0";
 
@@ -169,8 +169,15 @@ namespace ChamaApp
                 MessageBox.Show("Cannot continue without an account", "@Chamaz", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cboAccount.Focus();
                 return;
-            }
+            } 
             
+            //if (!SqliteDataAccess.IsDateWithinFinancialYear(dtpTransDate.Value))
+              //{
+              //    MessageBox.Show("Trans Date is not within the current financial year", "@Chamaz", MessageBoxButtons.OK, MessageBoxIcon.Error);
+              //    dtpTransDate.Focus();
+              //    return;
+              //}
+
             if (decimal.Parse(TxtTotalAmount.Text.Trim()) < 1)
             {
                 MessageBox.Show("Amount should not be negative or Zero", "@Chamaz", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -236,7 +243,7 @@ namespace ChamaApp
             DataGridViewRow dtgrow = dtgMemberFine.CurrentRow;
             txtFineId.Text = dtgrow.Cells[0].Value.ToString();//fine id
             txtPayerId.Text = dtgrow.Cells[1].Value.ToString();//payer id
-            cboPayerName.SelectedValue = (int)dtgrow.Cells[2].Value; //payer
+            cboPayerName.SelectedValue = (int)dtgrow.Cells[1].Value; //payer
             txtDetails.Text = dtgrow.Cells[3].Value.ToString();
             txtRctCshbkId.Text = dtgrow.Cells[4].Value.ToString();
             txtPayCshbkId.Text = dtgrow.Cells[5].Value.ToString();
@@ -254,7 +261,7 @@ namespace ChamaApp
             if (MessageBox.Show($"Are you sure to delete the selected fine for :  {lblMemberName.Text.Trim()}", "@Chamaz", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
 
-                if (SqliteDataAccess.DeleteFine(Convert.ToInt32(txtRctCshbkId.Text.Trim()), Convert.ToInt32(txtPayCshbkId.Text.Trim())) > 0)
+                if (SqliteDataAccess.DeleteFine(Convert.ToInt32(txtRctCshbkId.Text.Trim()), Convert.ToInt32(txtPayCshbkId.Text.Trim()), Convert.ToInt32(txtFineId.Text.Trim())) > 0)
                 {
                     MessageBox.Show($"Fine Details Deleted", "@Chamaz", MessageBoxButtons.OK);
                 }

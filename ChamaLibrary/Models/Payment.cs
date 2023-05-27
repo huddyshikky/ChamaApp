@@ -8,6 +8,7 @@ namespace ChamaLibrary.Models
 {
     public class Payment
     {
+        //Id,VoucherNo,PayeeId,Payee,PaymentDetails,CashBookId
         public int Id { get; set; }
         public int VoucherNo { get; set; }
         public int PayeeId { get; set; }

@@ -97,6 +97,7 @@
     <Compile Include="Repository\IGenericRepository.cs" />
     <Compile Include="ViewModel\AccountVM.cs" />
     <Compile Include="ViewModel\CashBookVoteVM.cs" />
+    <Compile Include="ViewModel\LoanVM.cs" />
     <Compile Include="ViewModel\MemberFineVM.cs" />
     <Compile Include="ViewModel\PaymentVM.cs" />
     <Compile Include="ViewModel\ReceiptVM.cs" />
