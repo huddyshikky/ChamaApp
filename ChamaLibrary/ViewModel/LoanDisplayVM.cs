@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChamaLibrary.Models
+namespace ChamaLibrary.ViewModel
 {
-    public class LoanTransaction
+    public class LoanDisplayVM
     {
         public int Id { get; set; }
-        public int LoanId { get; set; }
-        public int CashBookId { get; set; }
+        public string Details { get; set; }    
     }
 }

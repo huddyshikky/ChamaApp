@@ -122,6 +122,7 @@ namespace ChamaApp
         }
         private void btnRepayLoan_Click(object sender, EventArgs e)
         {
+            OpenChildForm(new Frm_LoanRepayment());
             HideAllSubMenus();
         }
         #endregion

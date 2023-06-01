@@ -81,7 +81,7 @@
     <Compile Include="Models\MemberFine.cs" />
     <Compile Include="Models\FinYear.cs" />
     <Compile Include="Models\Loan.cs" />
-    <Compile Include="Models\LoanTransaction.cs" />
+    <Compile Include="Models\LoanRepayment.cs" />
     <Compile Include="Models\LoanType.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Payment.cs" />
@@ -97,6 +97,9 @@
     <Compile Include="Repository\IGenericRepository.cs" />
     <Compile Include="ViewModel\AccountVM.cs" />
     <Compile Include="ViewModel\CashBookVoteVM.cs" />
+    <Compile Include="ViewModel\LoanDisplayVM.cs" />
+    <Compile Include="ViewModel\LoanRepaymentVM.cs" />
+    <Compile Include="ViewModel\LoanShortDisplayVM.cs" />
     <Compile Include="ViewModel\LoanVM.cs" />
     <Compile Include="ViewModel\MemberFineVM.cs" />
     <Compile Include="ViewModel\PaymentVM.cs" />

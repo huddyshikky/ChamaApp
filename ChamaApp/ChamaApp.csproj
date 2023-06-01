@@ -193,6 +193,9 @@
     <EmbeddedResource Include="Frm_FinYear.resx">
       <DependentUpon>Frm_FinYear.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm_LoanRepayment.resx">
+      <DependentUpon>Frm_LoanRepayment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm_LoanTypes.resx">
       <DependentUpon>Frm_LoanTypes.cs</DependentUpon>
     </EmbeddedResource>

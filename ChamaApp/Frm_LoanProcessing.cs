@@ -17,12 +17,10 @@ namespace ChamaApp
     {
         private bool EditMode = false;
 
-        List<CashBookVoteVM> CashBookVotes = new List<CashBookVoteVM>();
-        List<ReceiptVM> Receipts = new List<ReceiptVM>(); 
+        //List<CashBookVoteVM> CashBookVotes = new List<CashBookVoteVM>();
+        //List<ReceiptVM> Receipts = new List<ReceiptVM>(); 
         List<LoanVM> Loans = new List<LoanVM>();
         LoanVM Loan = null;
-        private Vote FineVote = null;
-        private Vote FineWithdrawal = null;
 
         private void ShowAllPanel()
         {

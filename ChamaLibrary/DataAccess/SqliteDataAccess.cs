@@ -2810,5 +2810,271 @@ namespace ChamaLibrary.DataAccess
             }
         }
 
+        // Loan repayment
+
+        public static List<LoanRepaymentVM> GetLoanRepaymentsById(int Id)
+        {
+            // LoanId,PayerId,Payer,AccountId,ReceiptId,TransDate,
+            // ReceiptNo,ReceiptCsbkId,Amount,AmountWords,PayMode,PayModeNo
+
+            try
+            {
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    var sql = "Select LoanRepayments.Id as Id,PayerId,Payer,AccountId,ReceiptId,TransDate,ReceiptNo," +
+                              "Receipts.CashBookId as ReceiptCsbkId,Amount,AmountWords," +
+                              "PayMode,PayModeNo From Receipts,LoanRepayments,Cashbooks " +
+                                    "Where LoanRepayments.LoanId=@Id " +
+                                    "And LoanRepayments.ReceiptId=Receipts.Id " +
+                                    "And Cashbooks.Id=Receipts.CashBookId ";
+
+                    var result = cnn.Query<LoanRepaymentVM>(sql, new { Id });
+                    return result.ToList();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+
+
+            }
+        }
+
+        public static Loan GetLoanById(int Id)
+        {
+            try
+            {
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    var result = cnn.QueryFirstOrDefault<Loan>("Select * From Loans where Id=@Id", new { Id });
+                    return result;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+
+
+            }
+        }
+
+        public static int InsertLoan(LoanVM Loan)
+        {
+            try
+            {
+                //Get Loan vote Id
+                int LoanVoteID = GetVoteId("Loan");
+
+                if (LoanVoteID < 1)
+                {
+                    MessageBox.Show("Error in creating Loan vote"); throw new Exception();
+                }
+
+                //get cashbook
+                CashBook CashBook = new CashBook
+                {
+                    Id = 0,
+                    TransDate = Loan.TransDate,
+                    Month = UsableFunctions.GetMonthInWords(Loan.TransDate.Month),
+                    AccountId = Loan.AccountId,
+                    Amount = Loan.PrincipleAmount,
+                    AmountWords = UsableFunctions.ToWords(Loan.PrincipleAmount),
+                    PayMode = Loan.PayMode,
+                    PayModeNo = Loan.PayModeNo,
+                    CreditOrDebit = "Debit", //Credit,Debit
+                    Category = "Loan", //MemberDeposits,NonMemberDeposits 
+                    BankDate = Loan.TransDate,
+                    UserId = CurUserId,
+                };
+
+                //create Payment cashbookvotes
+
+                List<CashBookVoteVM> cashBookVote = new List<CashBookVoteVM>();
+                cashBookVote.Add(new CashBookVoteVM { VoteId = LoanVoteID, VoteAmount = Loan.PrincipleAmount });
+
+                // insert Loan details
+
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    cnn.Open();
+                    using (var Trans = cnn.BeginTransaction())
+                    {
+                        try
+                        {
+                            int PaymentId = 0;
+
+                            #region Payment
+
+                            PaymentVM Payment = new PaymentVM
+                            {
+
+                                VoucherNo = Loan.VoucherNo,
+                                PayeeId = Loan.PayeeId,
+                                Payee = Loan.Payee,
+                                PaymentDetails = $"Loan for {Loan.Payee}",
+                            };
+
+                            cashBookVote.FirstOrDefault().VoteId = LoanVoteID;
+
+                            //insert on cashbook and cashbookvotes
+                            int CsbkPayId = InsertCashBook(CashBook, cashBookVote, cnn);
+                            if (CsbkPayId < 1) { throw new Exception(); }
+                            Payment.CashBookId = CsbkPayId;
+
+                            //insert on payment 
+                            PaymentId = InsertPayment(Payment, cnn);
+                            if (PaymentId < 1) { throw new Exception(); }
+                            Loan.PaymentId = PaymentId;
+
+                            #endregion
+
+
+                            //insert on Loans 
+
+                            //Id,LoanTypeId,PaymentId,PrincipleAmount,InterestRate,InterestAmount,RepayPeriod,
+                            //RepayPeriodType,PeriodicRepayAmount,PeriodicPenaltyAmount,TotalAmount
+                            int Result = cnn.Execute("insert into Loans(LoanTypeId,PaymentId,PrincipleAmount,InterestRate,InterestAmount,RepayPeriod," +
+                                    "RepayPeriodType,PeriodicRepayAmount,PeriodicPenaltyAmount,TotalAmount) " +
+                                    "values(@LoanTypeId,@PaymentId,@PrincipleAmount,@InterestRate,@InterestAmount,@RepayPeriod,@RepayPeriodType,@PeriodicRepayAmount," +
+                                    "@PeriodicPenaltyAmount,@TotalAmount);", Loan);
+                            if (Result < 1) { throw new Exception(); }
+
+                            Trans.Commit();
+                            return 1;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                            Trans.Rollback();
+                            return 0;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return 0;
+            }
+        }
+        public static int UpdateLoan(LoanVM Loan)
+        {
+            try
+            {
+
+                //get cashbook
+                CashBook CashBook = new CashBook
+                {
+                    Id = Loan.PaymentCsbkId,
+                    TransDate = Loan.TransDate,
+                    Month = UsableFunctions.GetMonthInWords(Loan.TransDate.Month),
+                    AccountId = Loan.AccountId,
+                    Amount = Loan.PrincipleAmount,
+                    AmountWords = UsableFunctions.ToWords(Loan.PrincipleAmount),
+                    PayMode = Loan.PayMode,
+                    PayModeNo = Loan.PayModeNo,
+                    BankDate = Loan.TransDate,
+                    UserId = CurUserId,
+                };
+
+
+                // update loan details
+
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    cnn.Open();
+                    using (var Trans = cnn.BeginTransaction())
+                    {
+                        try
+                        {
+                            #region update cashbook,cashbookvotes,payments
+
+                            //update on cashbook ,cashbookvotes and payment
+                            int CsbkRctId = UpdateCashBook(CashBook, cnn);
+                            if (CsbkRctId < 1) { throw new Exception(); }
+
+                            //update on payment 
+                            var Payresult = cnn.Execute("update payments set VoucherNo=@VoucherNo,PayeeId=@PayeeId,Payee=@Payee " +
+                                                        "where CashBookId=@PaymentCsbkId ", Loan);
+                            if (Payresult < 0) { return 0; }
+
+                            #endregion
+
+                            #region member loans 
+                            var lresult = cnn.Execute("update loans set LoanTypeId=@LoanTypeId,PrincipleAmount=@PrincipleAmount,InterestRate=@InterestRate," +
+                                "InterestAmount=@InterestAmount,RepayPeriod=@RepayPeriod,RepayPeriodType=@RepayPeriodType,PeriodicRepayAmount=@PeriodicRepayAmount," +
+                                "PeriodicPenaltyAmount=@PeriodicPenaltyAmount,TotalAmount=@TotalAmount " +
+                                                        "where Id=@Id ", Loan);
+                            if (lresult < 0) { return 0; }
+
+                            #endregion
+
+
+                            Trans.Commit();
+                            return 1;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                            Trans.Rollback();
+                            return 0;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return 0;
+            }
+
+        }
+        public static int DeleteLoan(int PaymentCsbkId, int Id)
+        {
+            try
+            {
+                using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+                {
+                    cnn.Open();
+                    using (var Trans = cnn.BeginTransaction())
+                    {
+                        try
+                        {
+                            //delete on cashbook and cashboovotes
+                            var DelPayresult = DeleteCashBook(PaymentCsbkId, cnn);
+                            if (DelPayresult < 1) { throw new Exception(); }
+
+                            //delete from payments
+
+                            var payresult = cnn.Execute("delete from payments where CashBookId=@PaymentCsbkId", new { PaymentCsbkId });
+                            if (payresult < 1) { throw new Exception(); }
+
+                            //delete on Loans table
+
+                            var mresult = cnn.Execute("delete from loans where Id=@Id", new { Id });
+                            if (mresult < 1) { throw new Exception(); }
+
+                            Trans.Commit();
+                            return 1;
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                            Trans.Rollback();
+                            throw new Exception();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return 0;
+            }
+        }
+
     }
 }

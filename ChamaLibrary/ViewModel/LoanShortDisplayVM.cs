@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ChamaLibrary.ViewModel
 {
-    public class LoanVM
+    public class LoanShortDisplayVM
     {
         //Id,PayeeId,Payee,AccountId,LoanTypeId,TransDate,VoucherNo,PaymentCsbkId,PaymentId,
         //PrincipleAmount,AmountWords,PayMode,PayModeNo,InterestRate,InterestAmount,RepayPeriod,RepayPeriodType,
@@ -14,7 +14,6 @@ namespace ChamaLibrary.ViewModel
 
         public int Id { get; set; }
         public int PayeeId { get; set; }
-        public string Payee { get; set; }
         public int AccountId { get; set; }
         public int LoanTypeId { get; set; }
         public DateTime TransDate { get; set; }
@@ -32,9 +31,5 @@ namespace ChamaLibrary.ViewModel
         public decimal PeriodicRepayAmount { get; set; }
         public decimal PeriodicPenaltyAmount { get; set; }
         public decimal TotalAmount { get; set; }
-        public string ShortDescription
-        {
-            get { return TransDate.ToShortDateString()+" | "+ PrincipleAmount.ToString(); }
-        }
     }
 }
